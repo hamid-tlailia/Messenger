@@ -5,7 +5,7 @@ import Header from './components/header/header';
 // import login component
 import Login from './pages/login/login'
 // import router element 
-import { BrowserRouter as Router , Routes , Route } from 'react-router-dom';
+import { BrowserRouter as Router , Routes , Route , HashRouter } from 'react-router-dom';
 // import not found page
 import NotFound from './pages/not-found/notFound';
 // import home component
@@ -35,7 +35,8 @@ setUser(true)
   })
 
   return (
-    <Router>
+    <HashRouter>
+      <Router>
       {
   user && <Header/>
 }
@@ -55,6 +56,7 @@ setUser(true)
   user && <Nav/>
 }
     </Router>
+    </HashRouter>
   );
 }
 
