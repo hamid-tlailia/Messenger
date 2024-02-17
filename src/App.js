@@ -42,7 +42,7 @@ setUser(true)
       <div className="App" >
 
 <Routes>
-  <Route exact path="/" element={user  ? <Home/> : <Login/>}/>
+  <Route exact path="/" element={<Home/> }/>
   <Route  path="/notifications" element={<Notifications/>}/>
   <Route  path="/messages" element={<Messages/>}/>
   <Route  path="/profile" element={<User/>}/>
