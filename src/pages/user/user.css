@@ -4,7 +4,7 @@
   background-color: whitesmoke;
   padding: 8px;
   position: relative;
-  height: 90vh;
+  height: max-content;
   margin-top: 0;
 }
 
@@ -250,6 +250,8 @@ align-items: center;
   align-items: center;
   background-color: white;
   margin-top: 5px;
+  margin-bottom: 10px !important;
+  border-bottom: 3px solid whitesmoke;
 }
 /* logout btn style */
 .Btn {

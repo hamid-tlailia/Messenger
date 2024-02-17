@@ -135,16 +135,17 @@ const Messages = () => {
   };
   return (
     // messages area parent
-    <div className="messages-area-parent">
+    <div className="messages-area-parent h-100"  style={{backgroundColor:"whitesmoke"}}>
       {/* messages container ==> leftSideBar + chatBox */}
-      <div className="messages-container flex-center">
+      <div className="messages-container flex-center h-100" style={{backgroundColor:"whitesmoke"}}>
         {/*left side bar */}
         <div
           className={
             getSideBar
-              ? "left-bar  text-center active"
+              ? "left-bar  text-center active h-100"
               : "left-bar  text-center"
           }
+          style={{backgroundColor:"whitesmoke"}}
           onClick={() => {
             setShowEmojiPicker(false);
           }}
@@ -316,8 +317,8 @@ const Messages = () => {
         <div
           className={
             getSideBar
-              ? "chat-box text-align-left active "
-              : "chat-box text-align-left "
+              ? "chat-box text-align-left active h-100"
+              : "chat-box text-align-left h-100"
           }
         >
           {/* chatBox header */}
