@@ -1,24 +1,60 @@
-import logo from './logo.svg';
+// import app css file
 import './App.css';
+// importing header component
+import Header from './components/header/header';
+// import login component
+import Login from './pages/login/login'
+// import router element 
+import { BrowserRouter as Router , Routes , Route } from 'react-router-dom';
+// import not found page
+import NotFound from './pages/not-found/notFound';
+// import home component
+import Home from './pages/home/home';
+// import mobile navbar
+import Nav from './components/navbar-mobile/nav';
+import { useEffect, useState } from 'react';
+// import notifications component
+import Notifications from './pages/notifications/notifications';
+// import Messages component
+import Messages from './pages/messages/messages';
+// import User component
+import User from './pages/user/user';
+// import post details component
+import Details from './pages/post-details/details';
 
 function App() {
+  // set user login status
+  const [user, setUser] = useState(false);
+  // check if user is already loged in
+
+  useEffect(() => {
+    const login = localStorage.getItem("user-login");
+    if(login ){
+setUser(true)
+    }
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+      {
+  user && <Header/>
+}
+      <div className="App" >
+
+<Routes>
+  <Route exact path="/" element={user  ? <Home/> : <Login/>}/>
+  <Route  path="/notifications" element={<Notifications/>}/>
+  <Route  path="/messages" element={<Messages/>}/>
+  <Route  path="/profile" element={<User/>}/>
+  <Route  path="/posts/details/:any" element={<Details/>}/>
+  <Route  path="*" element={<NotFound/>}/>
+</Routes>
+
     </div>
+    {
+  user && <Nav/>
+}
+    </Router>
   );
 }
 

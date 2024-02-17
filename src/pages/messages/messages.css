@@ -1,0 +1,627 @@
+/* define general classes */
+
+.flex-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+}
+.center {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.text-secondary {
+  color: blueviolet !important;
+}
+.border-secondary {
+  border-left: 4px solid blueviolet !important;
+}
+.border-green {
+  border-left: 4px solid green !important;
+}
+/* parent chat area style */
+
+.messages-area-parent {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-top: 0;
+  background-color: whitesmoke;
+  overflow: hidden;
+}
+
+/* messages container */
+.messages-container {
+  padding: 6px;
+  position: relative;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* left side bar style  ============================== IMPOETANT ===========================*/
+
+.left-bar {
+  background-color: whitesmoke;
+  height: 89vh;
+  width: 30%;
+  padding: 8px;
+  overflow-y: hidden;
+}
+
+@media screen and (max-width: 765px) {
+  .left-bar {
+    position: relative;
+    top: 0;
+    left: 0vh;
+    background-color: whitesmoke;
+    top: 0;
+    width: 100%;
+    padding: 8px;
+    transition: 0.5s;
+    z-index: 2;
+  }
+
+  .left-bar.active {
+    position: absolute;
+    top: 0;
+    left: -200vh;
+    background-color: whitesmoke;
+    width: 100%;
+    padding: 8px;
+    z-index: 1005522;
+    transition: 0.4s;
+  }
+}
+/* form search style */
+.form {
+  background-color: white;
+  padding: 8px;
+  border-radius: 20px;
+  border: none;
+  width: 100%;
+}
+
+.form input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 90%;
+}
+.form i {
+  color: black;
+}
+
+/* online users style */
+
+.online-users {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3px;
+  padding: 8px;
+  margin-top: 5px;
+  overflow-x: auto;
+}
+
+.avatar {
+  width: 50px;
+  border-radius: 50%;
+}
+.user {
+  position: relative;
+  cursor: pointer;
+}
+.user-badge {
+  width: 5px;
+  height: 5px;
+  background-color: green;
+  padding: 5px;
+  position: absolute;
+  border-radius: 50%;
+  top: 5px;
+  left: 40px;
+  border: 2px solid white;
+}
+
+/* previous chat style === +++ => ::*/
+.previous-chat {
+  margin-top: 10px;
+  background-color: transparent;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+  overflow-y: auto;
+  padding-bottom: 20px;
+}
+
+.previous-chat.reverse {
+  margin-top: 10px;
+  background-color: transparent;
+  height: 60vh !important;
+  display: flex;
+  flex-direction: column-reverse !important;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+  overflow: scroll !important;
+  margin-bottom: 20vh;
+}
+.chat {
+  background-color: white;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.chat-avatar {
+  width: 50px;
+  margin-right: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.chat-details {
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+/* chat p overflow ... */
+.chat p {
+  width: 200px; /* Set width of the container */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflowing text */
+  text-overflow: ellipsis; /* Display ellipsis (...) for overflowed text */
+}
+/* chat box style ============================== IMPOETANT ===========================*/
+
+.chat-box {
+  position: relative;
+  width: 70%;
+  height: 100%;
+  background-color: whitesmoke;
+  border-left: 2px solid white;
+  padding: 8px;
+}
+
+@media screen and (max-width: 765px) {
+  .chat-box {
+    position: absolute;
+    left: 200vh;
+    top: 0;
+    width: 100%;
+    height: 100% !important;
+    background-color: whitesmoke;
+    border-left: 2px solid white;
+    padding: 8px;
+    transition: 0.6s;
+  }
+
+  .chat-box.active {
+    position: relative;
+    left: 0vh !important;
+    top: 0;
+    transition: 0.4s;
+    margin-bottom: 10vh !important;
+  }
+}
+/* chat header style */
+
+.chat-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 5px;
+}
+.user-details {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  width: max-content;
+}
+
+.call-center {
+  width: max-content;
+  padding: 5px;
+}
+.call-center i {
+  padding: 6px;
+  background-color: white;
+  font-size: 18px;
+  width: 50px !important;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* chat body style */
+
+.chat-body {
+  background-color: transparent;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 5px;
+  height: 60vh !important;
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 320px) {
+  .chat-body {
+    background-color: transparent;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 5px;
+    height: 60vh;
+    overflow-y: auto;
+  }
+}
+/* sender message style */
+.sender {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  justify-content: center;
+  gap: 0;
+  padding: 5px;
+}
+
+.sender-message {
+  position: relative;
+  background-color: blue;
+  padding: 8px;
+  border-radius: 0 6px 6px 20px;
+  color: white;
+}
+
+.sender:hover > span:first-child {
+  opacity: 1;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.715);
+}
+/* message sender options ===> copy + answer + delete style */
+.message-sender-options {
+  position: absolute;
+  top: -6vh;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  border-radius: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  align-items: end;
+  z-index: 100 !important;
+  opacity: 0;
+  transition: 0.2s;
+  filter: brightness(1);
+}
+
+.message-sender-options i {
+  font-size: 20px;
+  cursor: pointer;
+}
+.time {
+  font-size: 11px;
+  margin-bottom: 5px;
+}
+
+/* receiver message style */
+.receiver {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  width: 100%;
+  gap: 0;
+  padding: 0;
+  z-index: auto !important;
+  pointer-events: all !important;
+}
+
+.message-receiver-options {
+  position: absolute;
+  top: -6vh;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  padding: 0;
+  align-items: end;
+  z-index: 100 !important;
+  opacity: 1;
+  transition: 0.2s;
+  filter: brightness(1);
+}
+.message-receiver-options div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  height: 100%;
+  gap: 30px;
+  width: max-content;
+  opacity: 0;
+  z-index: 10 !important;
+}
+.receiver:hover > span:first-child {
+  top: 0vh;
+  z-index: 100 !important;
+}
+.message-receiver-options i {
+  font-size: 20px;
+  cursor: pointer;
+}
+.receiver:hover > span:first-child div {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.715);
+  transition: 0.5s;
+  z-index: 7 !important;
+}
+.receiver-message {
+  position: relative;
+  background-color: white;
+  padding: 8px;
+  border-radius: 6px 0 20px 6px;
+  color: black;
+  z-index: 0 !important;
+}
+.receiver-message:hover {
+  z-index: 1 !important;
+}
+/* liked message style */
+.liked-message {
+  position: absolute;
+  bottom: -2.5vh;
+  left: 0;
+  right: 1vh;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border: 3px solid whitesmoke;
+  border-radius: 50%;
+}
+/* message form style + chat footer */
+
+.chat-footer {
+  position: absolute;
+  bottom: auto;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  transition: 0.6s;
+}
+
+@media screen and (max-width: 700px) {
+  .chat-footer {
+    position: absolute;
+    bottom: -7vh;
+    width: 100%;
+    background-color: white;
+    transition: 0.6s;
+  }
+}
+.message-form {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-top: 0px;
+}
+
+.message-input {
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+  outline: none;
+  width: 90%;
+  border-radius: 20px;
+}
+
+.message-btn {
+  background-color: red;
+  color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: none;
+  font-size: 15px !important;
+}
+
+.icons {
+  background-color: whitesmoke;
+  border: 1px solid white;
+  border-radius: 20px;
+  width: 100%;
+  margin-right: 5px;
+  padding: 0px !important;
+}
+.icons i {
+  font-size: 20px;
+  cursor: pointer;
+}
+.get-side-bar {
+  cursor: pointer;
+}
+
+/* emoji picker style */
+
+.emoji {
+  position: absolute;
+  top: -62vh;
+  width: 100% !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: end;
+}
+
+@media screen and (max-width: 700px) {
+  .picker {
+    width: max-content !important;
+    height: 60vh !important;
+    top: 2vh !important;
+  }
+}
+
+/* audio ++++++ video call section style */
+.call-section-parent {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  color: white;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: -1 !important;
+  transition: 0.6s;
+}
+
+.call-section-parent.show {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  color: white;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 100000000222 !important;
+  transition: 0.6s;
+}
+
+/* call buttons style */
+
+.call-buttons {
+  position: absolute;
+  width: max-content;
+  height: max-content;
+  display: flex;
+  bottom: 0;
+  top: 80vh;
+  border-radius: 20px;
+  background-color: black;
+}
+
+/* friends profile section layout */
+
+.friend-profile-section {
+  position: absolute;
+  top: 0;
+  left: 200vh;
+  opacity: 0;
+  transition: 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+  padding: 8px;
+  background-color: white;
+  width: 100%;
+  height: 110%;
+  z-index: 10025555155;
+}
+.friend-profile-section.show {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  transition: 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+  padding: 8px;
+  background-color: white;
+  width: 100%;
+  height: 110%;
+  z-index: 10025555155;
+}
+.user-infos-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+.profile-avatar {
+  width: 100px !important;
+  height: 100px;
+}
+
+/* photo modal section layout */
+
+.photo-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: scale(0);
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.663);
+  width: 100%;
+  height: 110%;
+  color: white;
+  z-index: 10025555155;
+}
+.photo-modal.show {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  transform: scale(1);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+  padding: 8px;
+  width: 100%;
+  height: 110%;
+  z-index: 10025555155;
+}
+
+.photo-modal i {
+  color: firebrick;
+  cursor: pointer;
+}

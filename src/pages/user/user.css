@@ -1,0 +1,320 @@
+/* profile container style */
+
+.user-container {
+  background-color: whitesmoke;
+  padding: 8px;
+  position: relative;
+  height: 90vh;
+  margin-top: 0;
+}
+
+@media screen and (max-width : 768px) {
+  .user-container {
+    background-color: whitesmoke;
+    padding: 8px;
+    position: relative;
+    margin-top: 0;
+    overflow-y: auto;
+  }  
+}
+.content {
+  position: relative;
+  padding: 8px;
+  background-color: white;
+}
+/* user profile image style */
+.profile-avatar {
+  width: 80px;
+  margin-right: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.change-image {
+  width: max-content;
+  margin-top: 20px;
+}
+
+/* remove-select btn style */
+
+.remove-select {
+  width: 190px;
+}
+
+/* input : email and input : name style */
+.inputs {
+  border: none;
+  background-color: whitesmoke;
+  padding: 8px;
+  color: black;
+  outline: none;
+  width: max-content;
+  pointer-events: none;
+}
+.inputs.update {
+  pointer-events: all;
+}
+
+.update-area {
+  width: max-content;
+}
+.update-area  i {
+  cursor: pointer;
+  color: blue;
+}
+
+.btns {
+  width: 1vh !important;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* password input  style */
+
+.password-input {
+  border: none;
+  outline: none;
+  padding: 8px;
+  color: black;
+  border-radius: 8px;
+  width: max-content;
+  background-color: whitesmoke;
+}
+
+/* user friends list */
+.friends-list{
+  cursor: pointer;
+}
+
+/* friends list modal parent style */
+.friends-list-parent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: floralwhite;
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  display: none;
+}
+.friends-list-parent.show {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: floralwhite;
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  display: block;
+  overflow: hidden;
+}
+
+/* close modal X btn */
+.close-modal {
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  border: 1px solid white;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.close-modal:hover {
+  background-color: red;
+  color: white;
+}
+
+/* user list btn style */
+
+.lists-nav-btns {
+  border: 1px solid gold;
+  outline: none;
+  padding: 5px;
+}
+
+/* lists area style */
+
+.lists-area {
+  position: relative;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.user-friends-list{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 2vh;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 5px;
+  z-index: -1;
+  opacity: 0;
+  transition: .3s;
+}
+.user-friends-list.active {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 5px;
+  z-index: 1;
+  opacity: 1;
+  transition: .3s;
+}
+.user-requests-list{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 5px;
+  top: 2vh;
+  z-index: -1;
+  opacity: 0;
+  transition: .3s;
+}
+.user-requests-list.active {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 5px;
+  top: 0;
+  z-index: 1;
+  opacity: 1;
+  transition: .3s;
+}
+.icon-user-list {
+  font-size: 12px;
+}
+
+/* friends section style */
+
+.friends-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: auto !important;
+  background-color: white;
+  gap: 50px !important;
+}
+@media screen and (max-width : 446px) {
+  .friends-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: auto !important;
+    gap: 10px !important;
+    background-color: white;
+  }
+}
+/* general class */
+.row-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 5px;
+}
+/* logout section layout */
+.logout-section {
+  width: 100%;
+  padding: 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  margin-top: 5px;
+}
+/* logout btn style */
+.Btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: rgb(255, 65, 65);
+}
+
+/* plus sign */
+.sign {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign svg {
+  width: 17px;
+}
+
+.sign svg path {
+  fill: white;
+}
+/* text */
+.text {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  transition-duration: .3s;
+}
+/* hover effect on button width */
+.Btn:hover {
+  width: 125px;
+  border-radius: 40px;
+  transition-duration: .3s;
+}
+
+.Btn:hover .sign {
+  width: 30%;
+  transition-duration: .3s;
+  padding-left: 20px;
+}
+/* hover effect button's text */
+.Btn:hover .text {
+  opacity: 1;
+  width: 70%;
+  transition-duration: .3s;
+  padding-right: 10px;
+}
+/* button click effect*/
+.Btn:active {
+  transform: translate(2px ,2px);
+}

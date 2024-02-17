@@ -1,0 +1,61 @@
+
+/* container style */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  height: max-content;
+  overflow: hidden;
+  z-index: 100;
+  margin-top: 10vh;
+  width: 100%;
+}
+
+/* logo image container style */
+.logo {
+  width: 100% !important;
+}
+
+/* forms signup and login container style */
+.forms {
+  position: relative;
+  width: 100% !important;
+  overflow: hidden !important;
+  z-index: 100;
+  padding: 12px;
+height: 80vh;
+margin-bottom: 30px;
+}
+
+/* login div style actiev and inactive state */
+.login {
+  position: absolute;
+  transition: 0.5s;
+  width: 100%;
+  left: -200vh;
+  top: 0;
+}
+.login.active {
+  position: relative;
+  transition: 0.5s;
+
+  left: 0;
+  top: 0;
+}
+
+/* sign-up div style actiev and inactive state */
+.sign-up {
+  position: absolute;
+  transition: 0.5s;
+  right: -200vh;
+  top: 0;
+  width: 100%;
+}
+.sign-up.active {
+  position: relative;
+  transition: 0.5s;
+  right: 0;
+  top: 0;
+}

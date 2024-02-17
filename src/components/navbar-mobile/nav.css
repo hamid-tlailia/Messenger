@@ -1,0 +1,64 @@
+/* mobile header style */
+
+.mobile-header {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: max-content;
+  padding: 12px;
+  background-color: aliceblue;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10000;
+}
+/* nabars mobile style */
+.navs div{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  color: black;
+  
+}
+
+.navs div span {
+position: absolute;
+top: 5vh;
+height: 0;
+overflow: hidden;
+transition: .5s;  
+}
+.navs i {
+  font-size: 20px;
+
+}
+.navs.active > div span {
+  color: green;
+  position: relative;
+  height: max-content;
+  top: 2vh;
+  transition: .5s;
+}
+.navs.active div i {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -2vh;
+  left: auto;
+  font-size: 20px;
+  color: green;
+  border-radius: 0;
+  padding: 5px !important;
+  width: 50px;
+  height: 50px;
+  transition: .5s;
+  z-index: 122258874;
+border-top: 5px solid green;
+}

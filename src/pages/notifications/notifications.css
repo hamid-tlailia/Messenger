@@ -1,0 +1,66 @@
+/* general class for div row center */
+.all-center-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 3;
+}
+/* general class for div column center */
+.all-center-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 3;
+}
+
+/* parent container style */
+.container-fluid{
+  margin-top: 11vh;
+}
+@media screen and (max-width :767px) {
+  .container-fluid{
+    margin-top: 0;
+  }
+}
+/* notifications container style */
+
+.notifs {
+  height: max-content;
+  padding: 10px;
+  background-color: white;
+}
+@media screen and (max-width :700px) {
+  .notifs {
+    height: max-content;
+    padding: 10px;
+    background-color: white;
+    width: 100%;
+  }  
+}
+
+/* notifications body style */
+.notif-content{
+  margin-top: 0 !important;
+  background-color: whitesmoke;
+  padding: 8px;
+  border-radius: 6px;
+}
+/* notifications content trash icon style */
+
+.notif-content i {
+  cursor: pointer;
+}
+.chat-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.chat-details {
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
