@@ -37,9 +37,9 @@ setUser(true)
   return (
     <HashRouter>
     
-      {
-  user && <Header/>
-}
+      
+   <Header/>
+
       <div className="App" >
 
 <Routes>
@@ -52,9 +52,9 @@ setUser(true)
 </Routes>
 
     </div>
-    {
-  user && <Nav/>
-}
+    
+  <Nav/>
+
 
     </HashRouter>
   );
