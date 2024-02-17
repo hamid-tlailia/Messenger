@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.48715195.css",
-    "main.js": "/static/js/main.c3586e24.js",
-    "static/media/fleurs.jpeg": "/static/media/fleurs.c4418ddde850faaa0a6c.jpeg",
-    "static/media/flour.webp": "/static/media/flour.4577b7f408dedb962b1a.webp",
-    "static/media/chat-app-logo.png": "/static/media/chat-app-logo.f6d02cfd0c448e0e920e.png",
-    "static/media/user3.png": "/static/media/user3.ab45eb1d42b1faaf3d12.png",
-    "static/media/user1.png": "/static/media/user1.5faf09a7795d28bf5a2b.png",
-    "static/media/user5.png": "/static/media/user5.557587208eb9e232f2ca.png",
-    "static/media/user2.png": "/static/media/user2.a6143582309785dca610.png",
-    "static/media/user4.png": "/static/media/user4.0d14c6999b4a5c8e86a7.png",
-    "index.html": "/index.html",
-    "main.48715195.css.map": "/static/css/main.48715195.css.map",
-    "main.c3586e24.js.map": "/static/js/main.c3586e24.js.map"
+    "main.css": "/Messenger/static/css/main.48715195.css",
+    "main.js": "/Messenger/static/js/main.b178144e.js",
+    "static/media/fleurs.jpeg": "/Messenger/static/media/fleurs.c4418ddde850faaa0a6c.jpeg",
+    "static/media/flour.webp": "/Messenger/static/media/flour.4577b7f408dedb962b1a.webp",
+    "static/media/chat-app-logo.png": "/Messenger/static/media/chat-app-logo.f6d02cfd0c448e0e920e.png",
+    "static/media/user3.png": "/Messenger/static/media/user3.ab45eb1d42b1faaf3d12.png",
+    "static/media/user1.png": "/Messenger/static/media/user1.5faf09a7795d28bf5a2b.png",
+    "static/media/user5.png": "/Messenger/static/media/user5.557587208eb9e232f2ca.png",
+    "static/media/user2.png": "/Messenger/static/media/user2.a6143582309785dca610.png",
+    "static/media/user4.png": "/Messenger/static/media/user4.0d14c6999b4a5c8e86a7.png",
+    "index.html": "/Messenger/index.html",
+    "main.48715195.css.map": "/Messenger/static/css/main.48715195.css.map",
+    "main.b178144e.js.map": "/Messenger/static/js/main.b178144e.js.map"
   },
   "entrypoints": [
     "static/css/main.48715195.css",
-    "static/js/main.c3586e24.js"
+    "static/js/main.b178144e.js"
   ]
 }
