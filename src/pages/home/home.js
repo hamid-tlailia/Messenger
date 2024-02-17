@@ -39,7 +39,7 @@ const Home = () => {
     if (posts) {
       posts.forEach((post) => {
         if (
-          post.getAttribute("data-name").toLowerCase().includes(filtred_name)
+          post.getAttribute("data-name").toLowerCase().includes(filtred_name.toLocaleLowerCase())
         ) {
           document.querySelector(".no-result").innerHTML = "";
         } else {
@@ -50,7 +50,7 @@ const Home = () => {
       for (let i = 0; i < posts.length; i++) {
         // get post name
         const post_name = posts[i].getAttribute("data-name");
-        if (post_name.toLowerCase().includes(filtred_name)) {
+        if (post_name.toLowerCase().includes(filtred_name.toLocaleLowerCase())) {
           posts[i].style.display = "flex";
           // document.querySelector(".no-result").innerHTML =""
         } else {

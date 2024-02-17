@@ -50,7 +50,7 @@ const Messages = () => {
       // show not found labem if no reqult match the input value
       chats.forEach((chat) => {
         const chat_lower_name = chat.querySelector("strong").innerText;
-        if (chat_lower_name.toLocaleLowerCase().includes(input_value)) {
+        if (chat_lower_name.toLocaleLowerCase().includes(input_value.toLocaleLowerCase())) {
           document.querySelector(".no-result").innerHTML = "";
         } else {
           document.querySelector(".no-result").innerHTML = "No result found";
@@ -60,7 +60,7 @@ const Messages = () => {
       // show posts if name equal to input value and hide enequal posts
       for (let i = 0; i < chats.length; i++) {
         const chat_name = chats[i].querySelector("strong").innerText;
-        if (chat_name.toLowerCase().includes(input_value)) {
+        if (chat_name.toLowerCase().includes(input_value.toLocaleLowerCase())) {
           chats[i].style.display = "flex";
         } else {
           chats[i].style.display = "none";
