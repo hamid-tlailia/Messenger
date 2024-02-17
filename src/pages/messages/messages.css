@@ -261,7 +261,7 @@
   justify-content: start;
   align-items: start;
   gap: 5px;
-  height: 60vh !important;
+  height: 65vh !important;
   overflow-y: auto;
 }
 
