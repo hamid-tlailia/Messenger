@@ -16,6 +16,8 @@ import { toast } from "react-toastify";
 // import message photo example
 import photo from "../public/images/fleurs.jpeg";
 import { NavLink } from "react-router-dom";
+// import verified icon
+import verified from '../public/images/téléchargement.png'
 const Messages = () => {
   // left side bar state
   const [getSideBar, setGetSideBar] = useState(false);
@@ -396,6 +398,8 @@ const Messages = () => {
             </div>
             {/* receiver message */}
             <div className="receiver">
+          
+              <p className="receiver-message mb-0">
               <span className=" message-receiver-options">
                 <div className="options">
                   <i class="fas fa-heart text-danger" title="Like message"></i>
@@ -423,8 +427,7 @@ const Messages = () => {
                   ></i>
                 </div>
               </span>
-              <p className="receiver-message mb-0 initial-message">
-                this is a receiver message
+              <span className="initial-message p-0">  this is a receiver message</span>
               </p>
               <span className="d-flex justify-content-end align-items-center time">
                 2 hrs ago{" "}
@@ -639,7 +642,9 @@ const Messages = () => {
                   title="Preview image"
                 />
               </div>
-              <p className="fw-bold mb-0">Hiba</p>
+              <p className="fw-bold fs-3  mb-0 d-flex flex-row justify-content-center align-items-center">
+                <span>Hiba</span>
+                 <img src= {verified} width={40} alt="verified" /></p>
               <div className="shadow-2 d-flex flex-row justify-content-center align-items-center p-3 rounded-5 gap-2 mb-0">
                 <button
                   className="btn btn-light btn-floating text-dark"
