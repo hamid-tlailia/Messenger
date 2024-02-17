@@ -217,10 +217,10 @@ const User = () => {
                       : "user-requests-list"
                   }
                 >
-                  <div className="answer-friends-request-area">
+                  <div className="answer-friends-request-area w-100">
                     <p className="fw-bold mb-2">Friends requests :</p>
                     {/* request 1 */}
-                    <div className="friends-section  mb-2" style={{width:'100%'}}>
+                    <div className="friends-section gap-auto mb-2 " style={{width:'100%'}}>
                       <img
                         src={userThree}
                         className="chat-avatar shadow-4-strong p-1"
@@ -232,7 +232,7 @@ const User = () => {
                           <i class="fas fa-clock"></i> waiting
                         </p>
                       </div>
-                      <div className="d-flex flex-row justify-content-start align-items-start gap-2">
+                      <div className="d-flex flex-row w-100 justify-content-end align-items-end gap-2">
                         <button className="btn btn-success">
                           <i class="fas fa-circle-check text-light icon-user-list"></i>
                         </button>
@@ -268,10 +268,10 @@ const User = () => {
                     </div>
                   </div>
                   <hr />
-                  <div className="send-friend-request-area">
+                  <div className="send-friend-request-area w-100">
                     <p className="fw-bold mb-2">You may know :</p>
                     {/* user 1 */}
-                    <div className="friends-section gap-auto mb-2">
+                    <div className="friends-section gap-auto mb-2" style={{width:'100%'}}>
                       <img
                         src={userThree}
                         className="chat-avatar shadow-4-strong p-1"

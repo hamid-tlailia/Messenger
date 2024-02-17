@@ -305,7 +305,7 @@ const Messages = () => {
             className="no-result text-info fs-4"
             style={{
               position: "absolute",
-              top: "30vh",
+              top: "29vh",
               zIndex: "1",
               left: "15vh",
             }}

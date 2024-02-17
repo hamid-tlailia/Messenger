@@ -16,9 +16,9 @@ const Notifications = () => {
   return (
     <div className='container-fluid all-center-col notifs'>
       <h4>Notifications center</h4>
-      <div className="notifs ">
+      <div className="notifs w-100">
 {/* notification 1 */}
-<div  className="notif-content mb-4 d-flex flex-row justify-content-center align-items-center gap-4">
+<div  className="notif-content mb-4 d-flex flex-row w-100 justify-content-center align-items-center gap-4">
 <NavLink to="/posts/details/cc8p22df8pll6"><img src= {userThree} className='chat-avatar shadow-4-strong p-1' alt="chat" /></NavLink>
   <div className="chat-details w-100 mt-2 text-start">
     <div className="d-flex flex-row text-dark justify-content-start align-items-start gap-2 w-100">
