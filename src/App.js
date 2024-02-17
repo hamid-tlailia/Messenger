@@ -36,7 +36,7 @@ setUser(true)
 
   return (
     <HashRouter>
-      <Router>
+    
       {
   user && <Header/>
 }
@@ -55,7 +55,7 @@ setUser(true)
     {
   user && <Nav/>
 }
-    </Router>
+
     </HashRouter>
   );
 }
