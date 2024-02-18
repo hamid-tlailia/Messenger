@@ -40,8 +40,8 @@ background-color: whitesmoke;
 /* logo image style */
 
 .image-logo {
-  width:80px !important;
-  height: 80px !important;
+  width:70px !important;
+  height: 70px !important;
   width: max-content;
   border-radius: 50%;
 }

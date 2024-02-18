@@ -8,14 +8,14 @@
   margin-top: 0;
 }
 
-@media screen and (max-width : 768px) {
+@media screen and (max-width: 768px) {
   .user-container {
     background-color: whitesmoke;
     padding: 8px;
     position: relative;
     margin-top: 0;
     overflow: auto;
-  }  
+  }
 }
 .content {
   position: relative;
@@ -58,7 +58,7 @@
 .update-area {
   width: max-content;
 }
-.update-area  i {
+.update-area i {
   cursor: pointer;
   color: blue;
 }
@@ -84,8 +84,8 @@
 }
 
 /* user friends list */
-.friends-list{
-  cursor: pointer;
+.friends-list {
+  cursor: auto;
 }
 
 /* friends list modal parent style */
@@ -103,12 +103,12 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: floralwhite;
+  background-color: white;
   width: 100%;
   height: 100%;
   padding: 8px;
   display: block;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 /* close modal X btn */
@@ -134,19 +134,22 @@
   border: 1px solid gold;
   outline: none;
   padding: 5px;
+  width: calc(100% / 3);
 }
 
 /* lists area style */
 
 .lists-area {
   position: relative;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  height: 100%;
+  overflow-y: auto !important;
 }
 
-.user-friends-list{
+.user-friends-list {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -159,14 +162,13 @@ align-items: center;
   padding: 5px;
   z-index: -1;
   opacity: 0;
-  transition: .3s;
+  transition: 0.3s;
 }
 .user-friends-list.active {
   position: relative;
   height: 100%;
   width: 100%;
   top: 0;
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -174,28 +176,27 @@ align-items: center;
   padding: 5px;
   z-index: 1;
   opacity: 1;
-  transition: .3s;
+  transition: 0.3s;
 }
-.user-requests-list{
+.user-requests-list {
   position: absolute;
   height: 100%;
   width: 100%;
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: start;
   padding: 5px;
   top: 2vh;
+  left: 0;
   z-index: -1;
   opacity: 0;
-  transition: .3s;
+  transition: 0.3s;
 }
 .user-requests-list.active {
   position: relative;
   height: 100%;
   width: 100%;
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -204,7 +205,7 @@ align-items: center;
   top: 0;
   z-index: 1;
   opacity: 1;
-  transition: .3s;
+  transition: 0.3s;
 }
 .icon-user-list {
   font-size: 12px;
@@ -221,7 +222,7 @@ align-items: center;
   background-color: white;
   gap: 50px !important;
 }
-@media screen and (max-width : 446px) {
+@media screen and (max-width: 446px) {
   .friends-section {
     display: flex;
     flex-direction: row;
@@ -253,6 +254,41 @@ align-items: center;
   margin-bottom: 70px !important;
   border-bottom: 3px solid whitesmoke;
 }
+
+/* create post list layout */
+
+.create-post-list {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 2vh;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 5px;
+  z-index: -1;
+  opacity: 0;
+  transition: 0.3s;
+}
+.create-post-list.active {
+  position: relative;
+  height: max-content !important;
+  width: 100%;
+  top: 0 !important;
+  left: 0 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 5px;
+  z-index: 1;
+  opacity: 1;
+  transition: 0.3s;
+  overflow-y: auto !important;
+}
+
 /* logout btn style */
 .Btn {
   display: flex;
@@ -265,7 +301,7 @@ align-items: center;
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition-duration: .3s;
+  transition-duration: 0.3s;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
   background-color: rgb(255, 65, 65);
 }
@@ -273,7 +309,7 @@ align-items: center;
 /* plus sign */
 .sign {
   width: 100%;
-  transition-duration: .3s;
+  transition-duration: 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -295,28 +331,52 @@ align-items: center;
   color: white;
   font-size: 1.2em;
   font-weight: 600;
-  transition-duration: .3s;
+  transition-duration: 0.3s;
 }
 /* hover effect on button width */
 .Btn:hover {
   width: 125px;
   border-radius: 40px;
-  transition-duration: .3s;
+  transition-duration: 0.3s;
 }
 
 .Btn:hover .sign {
   width: 30%;
-  transition-duration: .3s;
+  transition-duration: 0.3s;
   padding-left: 20px;
 }
 /* hover effect button's text */
 .Btn:hover .text {
   opacity: 1;
   width: 70%;
-  transition-duration: .3s;
+  transition-duration: 0.3s;
   padding-right: 10px;
 }
 /* button click effect*/
 .Btn:active {
-  transform: translate(2px ,2px);
+  transform: translate(2px, 2px);
+}
+
+/* post section and btns layout */
+
+.post-btns-parent {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.post-image-btn {
+  background-color: rgba(128, 128, 128, 0.296);
+  padding: 5px;
+  border-radius: 5px;
+  filter: brightness(1);
+  cursor: pointer;
+}
+
+.preview-image {
+  width: 100%;
+  height: 30vh !important;
+  border-radius: 10px;
 }

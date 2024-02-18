@@ -29,13 +29,13 @@
 .notifs {
   height: max-content;
   padding: 10px;
-  background-color: white;
+  background-color: transparent;
 }
 @media screen and (max-width :700px) {
   .notifs {
     height: max-content;
     padding: 10px;
-    background-color: white;
+    background-color: transparent;
     width: 100%;
   }  
 }
@@ -43,9 +43,10 @@
 /* notifications body style */
 .notif-content{
   margin-top: 0 !important;
-  background-color: whitesmoke;
+  background-color: transparent;
   padding: 8px;
   border-radius: 6px;
+  border: 1px solid white;
 }
 /* notifications content trash icon style */
 

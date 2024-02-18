@@ -1,22 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // import css file
 import "./user.css";
 // import user image
 import userThree from "../public/images/user3.png";
-
+// import dark/light mode icon
+import dark_light from "../public/images/dark-mode.png";
 const User = () => {
   // set a state for changing update and validate button display
   const [updateName, setUpdateName] = useState(false);
   const [updateEmail, setUpdateEmail] = useState(false);
   // set states for friends list and friends request to toggle show
-  const [showRequestList, setShowRequestList] = useState(false);
+  const [showRequestList, setShowRequestList] = useState("friends-list");
   // show/hide friends list modal state
   const [showModal, setShowModal] = useState(false);
+  // preview image src state
+  const [fileUrl, setFileUrl] = useState("");
   // starting with change page title
   useEffect(() => {
     document.title = "Hamidos | Profile";
   }, []);
+  // enable force dark mode by chrome browser
+  const handleSearch = () => {
+    alert(
+      'to enable dark mode in this app : .\n 1 : create in your browser url "chrome://flags" .\n 2 : in saerch area write "auto dark mode" .\n 3 : choose the option number 4 .\n 4 : relaunch chrome .\n NB : if you want to enable dark mode : repeat the same steps and turn "auto dark mode" to "Default"'
+    );
+  };
 
+  // preview image from input file in create post
+  const displayPostImage = (event) => {
+    // get input file value
+    const selectedFile = event.target.files[0];
+
+    // Create object URL for the selected file
+    const objectUrl = URL.createObjectURL(selectedFile);
+    // push image src inside file url state
+    setFileUrl(objectUrl);
+  };
   return (
     <div className="user-container container-fluid">
       <div className="profile-content">
@@ -33,20 +52,33 @@ const User = () => {
               className="profile-avatar shadow-4-strong p-1 me-1"
               alt="chat"
             />
-            <span
-              className="text-primary p-2 shadow-2"
-              onClick={() => {
-                setShowModal(!showModal);
-              }}
-            >
-              <i class="fas fa-list"></i> friends list
-            </span>
+            <div className="d-flex flex-row justify-content-center align-items-center gap-2">
+              <span
+                className="text-primary p-2 shadow-2"
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  setShowModal(!showModal);
+                }}
+              >
+                <i class="fas fa-list"></i> friends list
+              </span>
+              <span
+                className="p-2"
+                style={{ cursor: "pointer" }}
+                onClick={handleSearch}
+              >
+                <i
+                  class="far fa-moon text-warning bg-dark p-2 d-flex justify-content-center align-items-center fs-5"
+                  style={{ width: "30px", height: "30px", borderRadius: "50%" }}
+                ></i>
+              </span>
+            </div>
           </div>
           {/* select or remove current image */}
           <div className="d-flex flex-column flex-lg-row flex-md-row justify-content-center align-items-start gap-2 change-image">
             <label
               htmlFor="file"
-              className="btn btn-light text-dark remove-select"
+              className="btn btn-transparent text-dark remove-select"
             >
               Select new photo
             </label>
@@ -146,22 +178,30 @@ const User = () => {
             <hr />
             {/* friends list container */}
             <div className="friends-list-container">
-              <div className="d-flex flex-row justify-content-center align-items-center gap-2">
+              <div className="d-flex flex-row justify-content-between align-items-center gap-2">
                 <button
-                  className="lists-nav-btns w-50"
+                  className="lists-nav-btns"
                   onClick={() => {
-                    setShowRequestList(false);
+                    setShowRequestList("friends-list");
                   }}
                 >
                   Friends list
                 </button>
                 <button
-                  className="lists-nav-btns w-50"
+                  className="lists-nav-btns"
                   onClick={() => {
-                    setShowRequestList(true);
+                    setShowRequestList("requests-list");
                   }}
                 >
                   Requests
+                </button>
+                <button
+                  className="lists-nav-btns"
+                  onClick={() => {
+                    setShowRequestList("create-post");
+                  }}
+                >
+                  Create post
                 </button>
               </div>
               {/* lists are start*/}
@@ -169,9 +209,9 @@ const User = () => {
                 {/* user friends list */}
                 <div
                   className={
-                    showRequestList
-                      ? "user-friends-list"
-                      : "user-friends-list active"
+                    showRequestList === "friends-list"
+                      ? "user-friends-list active"
+                      : "user-friends-list"
                   }
                 >
                   <p className="fw-bold text-dark mb-2">Friends :</p>
@@ -212,7 +252,7 @@ const User = () => {
                 {/* user request list */}
                 <div
                   className={
-                    showRequestList
+                    showRequestList === "requests-list"
                       ? "user-requests-list active"
                       : "user-requests-list"
                   }
@@ -220,7 +260,10 @@ const User = () => {
                   <div className="answer-friends-request-area w-100">
                     <p className="fw-bold mb-2">Friends requests :</p>
                     {/* request 1 */}
-                    <div className="friends-section gap-auto mb-2 " style={{width:'100%'}}>
+                    <div
+                      className="friends-section gap-auto mb-2 "
+                      style={{ width: "100%" }}
+                    >
                       <img
                         src={userThree}
                         className="chat-avatar shadow-4-strong p-1"
@@ -271,7 +314,10 @@ const User = () => {
                   <div className="send-friend-request-area w-100">
                     <p className="fw-bold mb-2">You may know :</p>
                     {/* user 1 */}
-                    <div className="friends-section gap-auto mb-2" style={{width:'100%'}}>
+                    <div
+                      className="friends-section gap-auto mb-2"
+                      style={{ width: "100%" }}
+                    >
                       <img
                         src={userThree}
                         className="chat-avatar shadow-4-strong p-1"
@@ -289,6 +335,63 @@ const User = () => {
                     </div>
                   </div>
                 </div>
+                {/* create post area start */}
+                <div
+                  className={
+                    showRequestList === "create-post"
+                      ? "create-post-list w-100 active"
+                      : "create-post-list"
+                  }
+                >
+                  <p className="fw-bold mb-2">Let's create your post :</p>
+                  <div className="alert alert-warning">
+                    Please chose your image first to see however it is suitable
+                    with your post
+                  </div>
+                  <div className="d-flex flex-column justify-content-center align-items-center gap-1">
+                    {/* Display image from input file */}
+                    <div className="image-display-area w-100 p-2 mb-4">
+                      {fileUrl && (
+                        <img
+                          src={fileUrl}
+                          className="preview-image"
+                          alt="Preview"
+                        />
+                      )}
+                    </div>
+                    {/* User post text area */}
+                    <div className="form-floating w-100">
+                      <textarea
+                        className="form-control "
+                        cols={59}
+                        id="textAreaExample"
+                        rows={6}
+                        data-mdb-input-init
+                        style={{ resize: "none" }}
+                      ></textarea>
+                      <label className="form-label" for="textAreaExample">
+                        What is in your mind 😊
+                      </label>
+                    </div>
+                    {/* post file + submit btns */}
+                    <div className="d-flex flex-row justify-content-between align-items-center p-2 post-btns-parent">
+                      <label
+                        className="d-flex flex-row justify-content-center align-items-center gap-2 post-image-btn"
+                        htmlFor="image-file"
+                      >
+                        <input
+                          type="file"
+                          className="d-none"
+                          id="image-file"
+                          onChange={displayPostImage}
+                        />
+                        <i class="far fa-image"></i> Photos
+                      </label>
+                      <button className="btn btn-dark">post</button>
+                    </div>
+                  </div>
+                </div>
+                {/* create post area end */}
               </div>
               {/* lists area end */}
             </div>

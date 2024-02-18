@@ -67,12 +67,12 @@ const Home = () => {
           {/* search area */}
           <div className="d-flex flex-row justify-content-between text-align-center p-3 align-items-center mb-5 w-100">
             <span className="d-lg-none d-md-none"></span>
-            <h4 className="d-none d-md-flex d-md-flex bg-white mb-4">All posts :</h4>
+            <h4 className="d-none d-md-flex d-md-flex bg-transparent mb-4">All posts :</h4>
             {/* search form */}
             <form class="d-flex input-group w-auto">
               <input
                 type="search"
-                className="form-control rounded mb-4"
+                className="form-control rounded mb-4 bg-transparent"
                 placeholder="Search"
                 aria-label="Search"
                 aria-describedby="search-addon"
@@ -85,7 +85,7 @@ const Home = () => {
           </div>
           {/* area search not found label */}
           <div
-            className="no-result text-info fs-4"
+            className="no-result bg-transparent text-info fs-4"
             style={{
               position: "absolute",
             }}

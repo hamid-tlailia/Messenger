@@ -17,7 +17,7 @@ import { toast } from "react-toastify";
 import photo from "../public/images/fleurs.jpeg";
 import { NavLink } from "react-router-dom";
 // import verified icon
-import verified from '../public/images/téléchargement.png'
+import verified from "../public/images/téléchargement.png";
 const Messages = () => {
   // left side bar state
   const [getSideBar, setGetSideBar] = useState(false);
@@ -41,6 +41,10 @@ const Messages = () => {
   const [showModal, setShowModal] = useState(false);
   // photo modal image src state
   const [modalImageSrc, setModalImageSrc] = useState("");
+  // show/hide message image modal state
+  const [getMessageModal, setGetMessageModal] = useState(false);
+    // preview image src state
+    const [fileUrl, setFileUrl] = useState("");
   // prevouis chat reference for reverse chats usage
   const previous = useRef(null);
   // filter previous chat by name
@@ -52,7 +56,11 @@ const Messages = () => {
       // show not found labem if no reqult match the input value
       chats.forEach((chat) => {
         const chat_lower_name = chat.querySelector("strong").innerText;
-        if (chat_lower_name.toLocaleLowerCase().includes(input_value.toLocaleLowerCase())) {
+        if (
+          chat_lower_name
+            .toLocaleLowerCase()
+            .includes(input_value.toLocaleLowerCase())
+        ) {
           document.querySelector(".no-result").innerHTML = "";
         } else {
           document.querySelector(".no-result").innerHTML = "No result found";
@@ -135,11 +143,30 @@ const Messages = () => {
   const getProfile = () => {
     setShowProfile(!showProfile);
   };
+
+    // preview image from input file 
+    const displayPostImage = (event) => {
+      // get input file value
+      const selectedFile = event.target.files[0];
+  
+      // Create object URL for the selected file
+      const objectUrl = URL.createObjectURL(selectedFile);
+      // push image src inside file url state
+      setFileUrl(objectUrl);
+      setGetMessageModal(true)
+    };
+
   return (
     // messages area parent
-    <div className="messages-area-parent h-100"  style={{backgroundColor:"whitesmoke"}}>
+    <div
+      className="messages-area-parent h-100"
+      style={{ backgroundColor: "whitesmoke" }}
+    >
       {/* messages container ==> leftSideBar + chatBox */}
-      <div className="messages-container flex-center h-100" style={{backgroundColor:"whitesmoke"}}>
+      <div
+        className="messages-container flex-center h-100"
+        style={{ backgroundColor: "whitesmoke" }}
+      >
         {/*left side bar */}
         <div
           className={
@@ -147,7 +174,7 @@ const Messages = () => {
               ? "left-bar  text-center active h-100"
               : "left-bar  text-center"
           }
-          style={{backgroundColor:"whitesmoke"}}
+          style={{ backgroundColor: "whitesmoke" }}
           onClick={() => {
             setShowEmojiPicker(false);
           }}
@@ -398,36 +425,41 @@ const Messages = () => {
             </div>
             {/* receiver message */}
             <div className="receiver">
-          
               <p className="receiver-message mb-0">
-              <span className=" message-receiver-options">
-                <div className="options">
-                  <i class="fas fa-heart text-danger" title="Like message"></i>
-                  <i
-                    class="fas fa-reply text-primary"
-                    title="Reply message"
-                    onClick={handleReplyReceivedMessage}
-                  ></i>
-                  <i
-                    class="fas fa-clone text-warning"
-                    title="Copy message"
-                    onClick={(e) => {
-                      navigator.clipboard
-                        .writeText(
-                          e.target.parentNode.parentNode.parentNode.querySelector(
-                            ".initial-message"
-                          ).innerText
-                        )
-                        .then(toast.success("Message successfully copied"));
-                    }}
-                  ></i>
-                  <i
-                    class="fas fa-trash-can text-danger"
-                    title="Delete message"
-                  ></i>
-                </div>
-              </span>
-              <span className="initial-message p-0">  this is a receiver message</span>
+                <span className=" message-receiver-options">
+                  <div className="options">
+                    <i
+                      class="fas fa-heart text-danger"
+                      title="Like message"
+                    ></i>
+                    <i
+                      class="fas fa-reply text-primary"
+                      title="Reply message"
+                      onClick={handleReplyReceivedMessage}
+                    ></i>
+                    <i
+                      class="fas fa-clone text-warning"
+                      title="Copy message"
+                      onClick={(e) => {
+                        navigator.clipboard
+                          .writeText(
+                            e.target.parentNode.parentNode.parentNode.querySelector(
+                              ".initial-message"
+                            ).innerText
+                          )
+                          .then(toast.success("Message successfully copied"));
+                      }}
+                    ></i>
+                    <i
+                      class="fas fa-trash-can text-danger"
+                      title="Delete message"
+                    ></i>
+                  </div>
+                </span>
+                <span className="initial-message p-0">
+                  {" "}
+                  this is a receiver message
+                </span>
               </p>
               <span className="d-flex justify-content-end align-items-center time">
                 2 hrs ago{" "}
@@ -550,7 +582,7 @@ const Messages = () => {
               replyReceivedMessage !== "" && (
                 <div className="alert alert-dark   border-secondary">
                   <div className="d-flex flex-row justify-content-between align-items-center mb-2">
-                    <span className="text-secondary">Hiba</span>
+                    <span className="text-secondary">Sarra</span>
                     <span
                       style={{ cursor: "pointer" }}
                       onClick={() => {
@@ -578,6 +610,7 @@ const Messages = () => {
                   placeholder="Tape message"
                   onChange={(e) => {
                     setMessage(e.target.value);
+                    
                   }}
                   onFocus={() => {
                     setShowEmojiPicker(false);
@@ -601,7 +634,7 @@ const Messages = () => {
                 <label htmlFor="file">
                   <i class="fas fa-image text-dark me-3 "></i>
                 </label>
-                <input type="file" id="file" className="d-none" />
+                <input type="file" id="file" className="d-none" onChange={displayPostImage} />
               </div>
               <button className="message-btn">
                 <i class="fas fa-arrow-up"></i>
@@ -643,8 +676,9 @@ const Messages = () => {
                 />
               </div>
               <p className="fw-bold fs-3  mb-0 d-flex flex-row justify-content-center align-items-center">
-                <span>Hiba</span>
-                 <img src= {verified} width={40} alt="verified" /></p>
+                <span>Hamidos</span>
+                <img src={verified} width={40} alt="verified" />
+              </p>
               <div className="shadow-2 d-flex flex-row justify-content-center align-items-center p-3 rounded-5 gap-2 mb-0">
                 <button
                   className="btn btn-light btn-floating text-dark"
@@ -669,9 +703,9 @@ const Messages = () => {
               </div>
               <hr />
               <div className="d-flex flex-column border-top border-dark p-2 justify-content-start align-items-start w-100">
-                <p className="fw-bold text-primary mb-0">Followrs :</p>
+                <p className="fw-bold text-primary mb-0">Followers :</p>
                 <p className="mb-3">
-                  You following <span className="fw-bold">Hiba</span>
+                  You following <span className="fw-bold">Hamidos</span>
                 </p>
                 <p className="fw-bold text-primary mb-0">
                   Theme :{" "}
@@ -710,6 +744,43 @@ const Messages = () => {
           </div>
 
           {/* photo modal area end */}
+          {/* message photo modal start */}
+
+<div className={getMessageModal ? "photo-modal show bg-night p-2 " : "photo-modal  p-2"}>
+  {/* modal header control */}
+<div className="d-flex flex-row card-header p-2 justify-content-between align-items-center mb-2 w-100">
+              <span className="text-info"><i class="far fa-image text-info"></i> Hamidos</span>
+              <i
+                class="fas fa-xmark text-danger rounded border p-2 border-danger"
+                onClick={() => {
+                  setGetMessageModal(!getMessageModal);
+                }}
+              ></i>
+            </div>
+            {/* image area */}
+            <div className="card-body w-100">{fileUrl && (
+                        <img
+                          src={fileUrl}
+                          className="image-message"
+                          alt="Preview"
+                        />
+                      )}</div>
+            {/* message area */}
+            <div className=" w-100 p-2">
+            <form className="image-message-form active border">
+                  <input
+                    type="text"
+                    className="image-message-input"
+                    placeholder="Add caption..."
+                  />
+                  <button className="image-message-btn">
+                    <i class="fas fa-arrow-up text-light"></i>
+                  </button>
+                </form>
+            </div>
+</div>
+
+          {/* message photo area end */}
         </div>
         {/*  chat box end */}
         {/* audio and video call section */}

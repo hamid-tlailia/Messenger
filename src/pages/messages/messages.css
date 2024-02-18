@@ -6,6 +6,9 @@
   justify-content: space-between;
   align-items: start;
 }
+.bg-night {
+  background-color: #0f0f0fb1 !important;
+}
 .center {
   display: flex;
   flex-direction: row;
@@ -626,4 +629,50 @@
 .photo-modal i {
   color: firebrick;
   cursor: pointer;
+}
+
+/* messafe image modal content layout */
+
+.image-message-form.active {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 3px;
+  margin-top: 0px !important;
+  left: 0;
+width: 100% !important;
+border-radius: 40px;
+padding: 6px;
+margin-top: 15px;
+border: 1px solid black;
+border-radius: 20px;
+}
+.image-message-input {
+  width: 90%;
+  border: none;
+  background: none;
+  outline: none;
+  margin-right: 3px;
+  padding: 4px;
+  color: wheat;
+}
+.image-message-input::placeholder{
+  color: wheat;
+}
+.image-message-btn{
+  background-color: red;
+  color: white;
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50%;
+  border: none;
+}
+
+.image-message {
+  width: 100%  !important;
+  height: 60vh;
+  border-radius: 10px;
+  
 }
