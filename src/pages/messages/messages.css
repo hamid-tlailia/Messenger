@@ -29,7 +29,7 @@
 .messages-area-parent {
   position: relative;
   width: 100%;
-  height: 88vh !important;
+  height: 90vh !important;
   margin-top: 0;
   background-color: whitesmoke !important;
   overflow-x: hidden;
@@ -352,7 +352,7 @@
 
 .message-receiver-options {
   position: absolute;
-  top: -7vh;
+  top: -6vh;
   width: max-content;
   right: 0;
   height: 100%;
@@ -398,7 +398,7 @@
   transition: 0.4s;
 }
 .receiver-message:hover > span.message-receiver-options {
-  top: -1vh;
+  top: 0vh;
 }
 
 /* liked message style */
