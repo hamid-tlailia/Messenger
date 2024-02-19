@@ -41,7 +41,7 @@
   padding: 6px;
   position: relative;
   background-color: transparent !important;
-  height: 88vh !important;
+  height: 90vh !important;
   overflow: hidden;
 }
 
@@ -64,7 +64,7 @@
     top: 0;
     width: 100%;
     padding: 8px;
-    transition: 0.5s;
+    transition: 0.4s;
     z-index: 2;
   }
 
@@ -352,7 +352,7 @@
 
 .message-receiver-options {
   position: absolute;
-  top: -6vh;
+  top: -7vh;
   width: max-content;
   right: 0;
   height: 100%;
@@ -372,10 +372,10 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 12px;
+  padding: 15px;
   height: 100%;
   gap: 30px;
-  width: max-content;
+  width: 100%;
   opacity: 0;
   z-index: 10 !important;
 }
@@ -391,32 +391,30 @@
   padding: 8px;
   border-radius: 6px 0 20px 6px;
   color: black;
-  z-index: 0 !important;
 }
 .receiver-message:hover > span:first-child div {
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.715);
-  transition: 0.5s;
-  z-index: 7 !important;
+  transition: 0.4s;
 }
-.receiver-message:hover > span:first-child {
-  top: 0vh;
-  z-index: 100 !important;
+.receiver-message:hover > span.message-receiver-options {
+  top: -1vh;
 }
-.receiver-message:hover {
-  z-index: 1 !important;
-}
+
 /* liked message style */
 .liked-message {
   position: absolute;
   bottom: -2.5vh;
   left: 0;
   right: 1vh;
-  width: 30px;
+  width: 32px;
   height: 30px;
   background-color: white;
   border: 3px solid whitesmoke;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /* message form style + chat footer */
 
@@ -460,8 +458,8 @@
 .message-btn {
   background-color: red;
   color: white;
-  width: 25px;
-  height: 25px;
+  width: 33px;
+  height: 30px;
   border-radius: 50%;
   border: none;
   font-size: 15px !important;

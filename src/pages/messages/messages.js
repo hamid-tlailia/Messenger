@@ -126,17 +126,11 @@ const Messages = () => {
   };
   // get chat btn to  auto focus when user click reply btn
   const chat_btn = useRef(null);
-  
-  // get chat container to auto scroll when a reply message
-  // const chat_container = useRef(null);
+
   // automaticly scroll chat footer when a reply button is clicked
 
   useEffect(() => {
     if ( scroll === true) {
-      // chat_container.current.scrollIntoView({
-      //   behavior: "smooth",
-      //   block: "start",
-      // });
       chat_btn.current.focus();
     }
   }, [scroll]);
