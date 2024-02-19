@@ -388,21 +388,23 @@
 }
 
 .absolute-preview-image-section {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
+  left: 2vh;
+  padding: 8px;
   width: 15vh !important;
-  height: 100%;
+  height: max-content;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   opacity: 1;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .profile-preview-image {
-  
+  width: 15vh;
+  margin-left: 20px !important;
+  height: 15vh !important;
   margin-right: 20px;
   border-radius: 50%;
   pointer-events: none;

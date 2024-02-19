@@ -49,9 +49,7 @@ const User = () => {
     // Create object URL for the selected file
 
     // push image src inside file url state
-    if (selectedImage && selectedImage.size > 444500) {
-      alert("please an equivalent size and try agin");
-    } else {
+    if (selectedImage && selectedImage.size) {
       const imageUrl = URL.createObjectURL(selectedImage);
       setImageUrl(imageUrl);
       // clear input value
@@ -72,7 +70,11 @@ const User = () => {
             <div className="user-profile-img">
               <img
                 src={userThree}
-                className="profile-avatar shadow-4-strong p-1 me-1"
+                className={
+                  imageUrl
+                    ? "d-none"
+                    : "profile-avatar shadow-4-strong p-1 me-1"
+                }
                 alt="chat"
               />
               {/* absolute section to show input file value start */}
@@ -82,12 +84,12 @@ const User = () => {
                   {/* input file image display here */}
                   <img
                     src={imageUrl}
-                    className="w-100 h-100 profile-preview-image shadow-4-strong p-1 me-1"
+                    className=" profile-preview-image shadow-4-strong p-1 ms-4"
                     alt="preview"
                   />
                   {/* set or cancel options */}
-                  <div className="d-flex flex-column ms-5 justify-content-center align-items-center gap-2">
-                    <button className="btn btn-light  shadow-2 ms-1 btn-floating fs-6 p-0">
+                  <div className="d-flex flex-row  justify-content-between align-items-center gap-2">
+                    <button className="btn btn-light  shadow-2  btn-floating fs-6 p-0">
                       <i class="fas fa-circle-check  text-success"></i>
                     </button>
                     <button
