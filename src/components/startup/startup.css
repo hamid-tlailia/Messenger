@@ -1,6 +1,6 @@
 
 /* container paernt styling */
-.container-fluid{
+.container-startup{
 box-sizing: border-box;
 padding: 0px;
 position: absolute;
@@ -12,7 +12,7 @@ transition: .5s;
 z-index: 1000;
 }
 
-.container-fluid.hide{
+.container-startup.hide{
   opacity: 0;
 left: -300vh;
   transition: .5s;

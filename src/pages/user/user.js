@@ -15,6 +15,8 @@ const User = () => {
   const [showModal, setShowModal] = useState(false);
   // preview image src state
   const [fileUrl, setFileUrl] = useState("");
+  // preview profile image state
+  const [imageUrl, setImageUrl] = useState("");
   // starting with change page title
   useEffect(() => {
     document.title = "Hamidos | Profile";
@@ -22,7 +24,7 @@ const User = () => {
   // enable force dark mode by chrome browser
   const handleSearch = () => {
     alert(
-      'to enable dark mode in this app : .\n 1 : create in your browser url "chrome://flags" .\n 2 : in saerch area write "auto dark mode" .\n 3 : choose the option number 4 .\n 4 : relaunch chrome .\n NB : if you want to enable dark mode : repeat the same steps and turn "auto dark mode" to "Default"'
+      'To enable dark mode in this app : .\n 1 : Write in your browser url : browser-type , exp : "chrome://flags" .\n 2 : In saerch area write "Auto dark mode" .\n 3 : Choose the 4th option .\n 4 : Relaunch chrome .\n NB : if you want to disable dark mode : repeat the same steps and turn "Auto dark mode" to "Default"'
     );
   };
 
@@ -36,6 +38,27 @@ const User = () => {
     // push image src inside file url state
     setFileUrl(objectUrl);
   };
+// get input image by refrence to clear value after change
+const profileImageInput = useRef(null)
+  // display profile image func
+
+  const showProfileImage = (e) => {
+      // get input file value
+      const selectedImage = e.target.files[0];
+
+      // Create object URL for the selected file
+      
+      // push image src inside file url state
+      if(selectedImage && selectedImage.size > 21650){
+        alert('please an equivalent size and try agin')
+      } else{
+        const imageUrl = URL.createObjectURL(selectedImage);
+        setImageUrl(imageUrl); 
+        // clear input value
+        if(profileImageInput.current) profileImageInput.current.value = null
+      }
+
+  }
   return (
     <div className="user-container container-fluid">
       <div className="profile-content">
@@ -47,11 +70,32 @@ const User = () => {
           <p>update your account profile's informations and email address</p>
           {/* user profile image */}
           <div className="d-flex flex-row justify-content-between align-items-center friends-list">
+            <div className="user-profile-img">
             <img
               src={userThree}
               className="profile-avatar shadow-4-strong p-1 me-1"
               alt="chat"
             />
+            {/* absolute section to show input file value start */}
+            {/* check if already user choose an image */}
+            {
+              imageUrl &&
+              <form className="absolute-preview-image-section">
+              {/* input file image display here */}
+              <img src= {imageUrl} className="w-100 h-100 profile-preview-image shadow-4-strong p-1 me-1" alt="preview" />
+              {/* set or cancel options */}
+              <div className="d-flex flex-column ms-5 justify-content-center align-items-center gap-2">
+              <button className="btn btn-light  shadow-2 ms-1 btn-floating fs-6 p-0"><i class="fas fa-circle-check  text-success"></i></button>
+              <button class=" btn btn-light btn-floating p-2 p-0 shadow-2 text-danger fs-6" onClick={() => {
+                setImageUrl("")
+              }}>
+                <i className="fas fa-circle-xmark"></i>
+                </button>
+              </div>
+            </form>
+            }
+            {/* absolute section to show input file value end */}
+            </div>
             <div className="d-flex flex-row justify-content-center align-items-center gap-2">
               <span
                 className="text-primary p-2 shadow-2"
@@ -85,7 +129,7 @@ const User = () => {
             <button className="btn btn-danger text-light remove-select">
               Remove photo
             </button>
-            <input type="file" id="file" className="d-none" />
+            <input type="file" id="file" className="d-none" ref={profileImageInput} onChange={showProfileImage}/>
           </div>
           <hr />
           {/* name and email address update form */}

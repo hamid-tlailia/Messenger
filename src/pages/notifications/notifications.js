@@ -47,7 +47,7 @@ const Notifications = () => {
               alt="chat"
             />
           </NavLink>
-          <div className="chat-details w-100 mt-2 text-start">
+          <div className="chat-details w-100  text-start">
             <div className="d-flex flex-row text-dark justify-content-start align-items-start gap-2 w-100">
               <strong>Faycel</strong>
               <span>Share your post</span>

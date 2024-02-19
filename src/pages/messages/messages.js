@@ -33,6 +33,7 @@ const Messages = () => {
   // reply sent or received messgae states
   const [replySentMessage, setReplySentMessage] = useState("");
   const [replyReceivedMessage, setReplyReceivedMessage] = useState("");
+  const [replyImageMessage, setReplyImageMessage] = useState(null);
   // scroll chat state
   const [scroll, setScroll] = useState(false);
   // user profile show/hide state
@@ -510,7 +511,7 @@ const Messages = () => {
             {/* receiver message */}
             <div className="receiver">
               <p className="receiver-message mb-0">
-                this is a receiver message
+                this is a liked message
                 <span className="liked-message">❤️</span>
               </p>
               <span className="d-flex justify-content-end align-items-center time">
@@ -519,18 +520,6 @@ const Messages = () => {
             </div>
             {/* sender message */}
             <div className="sender">
-              {/* reply image message area start */}
-              <div className="reply bg-light shadow-2-strong">
-                <i class="fas fa-heart text-danger"></i>
-                <i class="fas fa-reply text-primary" title="Download image"></i>
-                {/* download image icon */}
-                <i
-                  class="fas fa-arrow-down text-warning"
-                  onClick={download}
-                ></i>
-                <i class="fas fa-trash-can text-danger"></i>
-              </div>
-              {/* reply image message area end */}
               <p
                 className="sender-message mb-0"
                 onClick={(e) => {
@@ -614,6 +603,38 @@ const Messages = () => {
                     </span>
                   </div>
                   {replyReceivedMessage}{" "}
+                </div>
+              )
+            }
+            {/* reply a message photo area */}
+
+            {
+              // check message photo state
+              replyImageMessage !== null && replyImageMessage !== "error" && (
+                // message reply section
+                <div className="alert alert-dark d-flex flex-row justify-content-between align-items-center border-green">
+                  {/* name + message type section */}
+                  <div className="d-flex flex-column justify-content-start align-items-start gap-1">
+                    <span>You</span>
+                    <span>
+                      <i className="far fa-image"></i> Photo
+                    </span>
+                  </div>
+                  {/* photo display area */}
+                  <img
+                    src={replyImageMessage}
+                    width={80}
+                    alt="preview-message-photo"
+                  />
+                  <span
+                    className="close-reply"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      setReplyImageMessage(null);
+                    }}
+                  >
+                    <i className="fas fa-xmark"></i>
+                  </span>
                 </div>
               )
             }
@@ -752,16 +773,47 @@ const Messages = () => {
                 }}
               ></i>
             </div>
-            <div className="d-flex justify-content-center align-items-center w-100 h-100">
+            <div className="d-flex flex-column justify-content-center align-items-center w-100 h-100">
               {modalImageSrc !== "" ? (
                 <img
                   src={modalImageSrc}
-                  className="img-fluid h-75"
+                  className="img-fluid message-photo w-100 h-75 mb-4"
                   alt="preview"
                 />
               ) : (
                 <span>No SRC available for this image</span>
               )}
+              {/* image reaction + reply + delete and download area */}
+              <div className="card w-75 reply-section mb-5">
+                {/* reply image message area start */}
+                <div className="reply">
+                  <i className="fas fa-heart text-danger"></i>
+                  <i
+                    className="fas fa-reply text-primary"
+                    title="Reply message"
+                    onClick={(e) => {
+                      setShowModal(false);
+                      e.target.parentNode.parentNode.parentNode.querySelector(
+                        ".message-photo"
+                      )
+                        ? setReplyImageMessage(
+                            e.target.parentNode.parentNode.parentNode.querySelector(
+                              ".message-photo"
+                            ).src
+                          )
+                        : setReplyImageMessage("error");
+                    }}
+                  ></i>
+                  {/* download image icon */}
+                  <i
+                    className="fas fa-arrow-down text-warning"
+                    title="Download image"
+                    onClick={download}
+                  ></i>
+                  <i className="fas fa-trash-can text-danger"></i>
+                </div>
+                {/* reply image message area end */}
+              </div>
             </div>
           </div>
 

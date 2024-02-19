@@ -678,7 +678,10 @@
 }
 
 /* reply an image message layout */
-
+.reply-section {
+  background-color: black;
+  border-radius: 20px;
+}
 .reply {
   position: relative;
   display: flex;

@@ -22,7 +22,7 @@ const Startup = () => {
   });
 
   return (
-    <div className= {`container-fluid ${skip && "hide"}`}>
+    <div className= {`container-startup ${skip && "hide"}`}>
       <div className="d-flex flex-column justify-content-center align-items-center">
         {/* logo */}
         <div className= {`logo-container ${getNext.background}`}>
