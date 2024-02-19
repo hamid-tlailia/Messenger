@@ -12,7 +12,8 @@ import { toast } from "react-toastify";
 import ShareButtons from '../../components/share-btns/shareButton';
 // import card image
 import logo from "../public/images/fleurs.jpeg";
-
+// import no registred user nav bar
+import NewUserNav from '../../components/login-header/newUserNav';;
 
 const Details = () => {
     // share post state
@@ -21,6 +22,8 @@ const Details = () => {
     const [show, setShow] = useState(false);
     // share modal state
     const [showModal, setShowModal] = useState(false);
+    // check if user authentificated / not state
+    const [authentificated, setAuthentificated] = useState(false);
     // starting with change page title
     useEffect(() => {
       document.title = "Hamidos | Post-Details";
@@ -39,7 +42,19 @@ useEffect(() => {
     });
   }
 },[])
+
+// check if user already loged in min once in this browser
+useEffect(() => {
+  const userToken = localStorage.getItem("user-login")
+  if(userToken){
+setAuthentificated(true)
+  }
+})
   return (
+    <>
+    {
+      !authentificated && <NewUserNav/>
+    }
     <div className='post-details' ref={details_container}>
       <h4 className='w-100 text-start'><span className='badge bg-primary shadow-3'>Post details</span></h4>
         {/* post card 1*/}
@@ -72,33 +87,40 @@ useEffect(() => {
                 others
               </span>
               {/* reactions btns container */}
+            {
+              !authentificated ? 
+              <span className='alert alert-warning w-100  text-center fs-5'>
+            <i class="fas fa-triangle-exclamation"></i> You are not able to react this post please login or sign-up first
+                </span> 
+              :
               <div className="d-flex flex-row justify-content-center align-items-center gap-3">
-                {/* like btn */}
-                <div className="reactions like">
-                  <i class="fas fa-heart text-danger me-2"></i> Like
-                </div>
-                {/* comment btn */}
-                <div
-                  className="reactions comment pe-none"  >
-              <i class="fas fa-comment me-1"></i> comment
-                </div>
-                {/* share btn */}
-                <div
-                  className="reactions share"
-                  onClick={(e) => {
-                    setShowModal(!showModal);
-                    setSharedTitle(
-                      e.target.parentNode.parentNode.querySelector(".post-body")
-                      ?
-                      e.target.parentNode.parentNode.querySelector(".post-body")
-                        .innerText
-                        : "Please go back and share again !"
-                    );
-                  }}
-                >
-                  <i class="fas fa-share me-2"></i> Share
-                </div>
+              {/* like btn */}
+              <div className="reactions like">
+                <i class="fas fa-heart text-danger me-2"></i> Like
               </div>
+              {/* comment btn */}
+              <div
+                className="reactions comment pe-none"  >
+            <i class="fas fa-comment me-1"></i> comment
+              </div>
+              {/* share btn */}
+              <div
+                className="reactions share"
+                onClick={(e) => {
+                  setShowModal(!showModal);
+                  setSharedTitle(
+                    e.target.parentNode.parentNode.querySelector(".post-body")
+                    ?
+                    e.target.parentNode.parentNode.querySelector(".post-body")
+                      .innerText
+                      : "Please go back and share again !"
+                  );
+                }}
+              >
+                <i class="fas fa-share me-2"></i> Share
+              </div>
+            </div>
+            }
               <div
                 className = "comments-section active"
               >
@@ -108,7 +130,7 @@ useEffect(() => {
                   <div className="all-flex-row w-100">
                     <div className="badge-comment  bg-dark text-light ">H</div>
                     <div className="all-flex-col">
-                      <strong className="mt-1">Hiba Jouablia</strong>
+                      <strong className="mt-1">Isra Mansour</strong>
                       <p className="comment-body">
                         i love this post ! <mark>1 hrs ago</mark>
                       </p>
@@ -126,16 +148,19 @@ useEffect(() => {
                   </div>
                 </div>
                 {/* input comments */}
-                <form className="comment-form active">
-                  <input
-                    type="text"
-                    className="comment-input"
-                    placeholder="Add comment"
-                  />
-                  <button className="comment-btn">
-                    <i class="fas fa-arrow-up"></i>
-                  </button>
-                </form>
+          {
+            authentificated &&
+            <form className="comment-form active">
+            <input
+              type="text"
+              className="comment-input"
+              placeholder="Add comment"
+            />
+            <button className="comment-btn">
+              <i class="fas fa-arrow-up"></i>
+            </button>
+          </form>
+          }
               </div>
             </div>
                   {/* share post modal */}
@@ -179,6 +204,8 @@ useEffect(() => {
       {/* toast container */}
       <ToastContainer style={{ zIndex: "10000000" }} />
     </div>
+    
+    </>
   );
 }
 

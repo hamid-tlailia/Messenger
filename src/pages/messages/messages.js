@@ -130,7 +130,7 @@ const Messages = () => {
   // automaticly scroll chat footer when a reply button is clicked
 
   useEffect(() => {
-    if ( scroll === true) {
+    if (scroll === true) {
       chat_btn.current.focus();
     }
   }, [scroll]);
@@ -150,16 +150,20 @@ const Messages = () => {
     setFileUrl(objectUrl);
     setGetMessageModal(true);
   };
+  // get hidden a for downloading image
+  const downloadImageSRC = useRef(null);
+  // download image func
 
+  const download = () => {
+    if (downloadImageSRC.current) {
+      downloadImageSRC.current.click();
+    }
+  };
   return (
     // messages area parent
-    <div
-      className="messages-area-parent"
-    >
+    <div className="messages-area-parent">
       {/* messages container ==> leftSideBar + chatBox */}
-      <div
-        className="messages-container flex-center "
-      >
+      <div className="messages-container flex-center ">
         {/*left side bar */}
         <div
           className={
@@ -271,7 +275,7 @@ const Messages = () => {
               />
               <div className="chat-details w-100 text-start">
                 <div className="d-flex flex-row justify-content-between align-items-center w-100">
-                  <strong>Hiba</strong>
+                  <strong>Faycel</strong>
                   <mark className="rounded-5">1 hrs</mark>
                 </div>
                 <p>this is what i told you last time about it</p>
@@ -493,7 +497,7 @@ const Messages = () => {
               <p className="receiver-message mb-0 d-flex flex-column justify-content-center align-items-start">
                 <div className="alert alert-secondary border-secondary p-1 mb-0">
                   <div className="d-flex flex-row justify-content-between align-items-center mb-2">
-                    <span className="text-secondary fw-bold">Hiba</span>
+                    <span className="text-secondary fw-bold">Sarra</span>
                   </div>
                   <span>This is a receiver message</span>
                 </div>
@@ -515,11 +519,25 @@ const Messages = () => {
             </div>
             {/* sender message */}
             <div className="sender">
+              {/* reply image message area start */}
+              <div className="reply bg-light shadow-2-strong">
+                <i class="fas fa-heart text-danger"></i>
+                <i class="fas fa-reply text-primary" title="Download image"></i>
+                {/* download image icon */}
+                <i
+                  class="fas fa-arrow-down text-warning"
+                  onClick={download}
+                ></i>
+                <i class="fas fa-trash-can text-danger"></i>
+              </div>
+              {/* reply image message area end */}
               <p
                 className="sender-message mb-0"
                 onClick={(e) => {
                   setShowModal(!showModal);
-                  setModalImageSrc(e.target.src);
+                  setModalImageSrc(
+                    e.target.parentNode.querySelector(".message-photo").src
+                  );
                 }}
               >
                 <img
@@ -530,6 +548,13 @@ const Messages = () => {
                   alt="message"
                   style={{ cursor: "pointer" }}
                 />
+                {/* hidden a element for downloading image */}
+                <a
+                  href={photo}
+                  className="d-none"
+                  ref={downloadImageSRC}
+                  download={photo}
+                ></a>
               </p>
               <span className="d-flex justify-content-end align-items-center time">
                 23 min ago{" "}
@@ -546,7 +571,7 @@ const Messages = () => {
             </div>
           </div>
           {/* chat box footer */}
-          <div className="card-footer chat-footer  p-3" >
+          <div className="card-footer chat-footer  p-3">
             {/* replied message and images area */}
             {
               // check if sender reply himself's message

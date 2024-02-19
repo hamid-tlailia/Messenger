@@ -33,7 +33,6 @@
   margin-top: 0;
   background-color: whitesmoke !important;
   overflow-x: hidden;
-  
 }
 
 /* messages container */
@@ -676,4 +675,21 @@
   width: 100% !important;
   height: 60vh;
   border-radius: 10px;
+}
+
+/* reply an image message layout */
+
+.reply {
+  position: relative;
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: max-content;
+  padding: 12px;
+}
+
+.reply i {
+  cursor: pointer;
 }

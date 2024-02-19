@@ -1,0 +1,25 @@
+/* NB : This navbar is using to be show when not registred user coming from an external link to see a post */
+
+/* navbar style */
+
+.navbar{
+  background-color: aliceblue;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 12vh;
+  z-index: 10000 !important;
+  overflow: hidden;
+}
+
+/* logo layout */
+
+.image-logo {
+  width:70px !important;
+  height: 70px !important;
+  width: max-content;
+  border-radius: 50%;
+}

@@ -16,24 +16,25 @@
 }
 
 /* parent container style */
-.container-fluid{
-  margin-top: 11vh;
+.notifs-parent{
+  margin-top: 0 !important;
+  padding: 10px;
 }
 @media screen and (max-width :767px) {
-  .container-fluid{
+  .notifs-parent{
     margin-top: 0;
   }
 }
 /* notifications container style */
 
 .notifs {
-  height: max-content;
+  height: 100%;
   padding: 10px;
   background-color: transparent;
 }
 @media screen and (max-width :700px) {
   .notifs {
-    height: max-content;
+    height:100%;
     padding: 10px;
     background-color: transparent;
     width: 100%;
@@ -42,11 +43,11 @@
 
 /* notifications body style */
 .notif-content{
-  margin-top: 0 !important;
   background-color: transparent;
   padding: 8px;
   border-radius: 6px;
   border: 1px solid white;
+  margin-top: 5vh;
 }
 /* notifications content trash icon style */
 

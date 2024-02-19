@@ -39,7 +39,10 @@ const Home = () => {
     if (posts) {
       posts.forEach((post) => {
         if (
-          post.getAttribute("data-name").toLowerCase().includes(filtred_name.toLocaleLowerCase())
+          post
+            .getAttribute("data-name")
+            .toLowerCase()
+            .includes(filtred_name.toLocaleLowerCase())
         ) {
           document.querySelector(".no-result").innerHTML = "";
         } else {
@@ -50,7 +53,9 @@ const Home = () => {
       for (let i = 0; i < posts.length; i++) {
         // get post name
         const post_name = posts[i].getAttribute("data-name");
-        if (post_name.toLowerCase().includes(filtred_name.toLocaleLowerCase())) {
+        if (
+          post_name.toLowerCase().includes(filtred_name.toLocaleLowerCase())
+        ) {
           posts[i].style.display = "flex";
           // document.querySelector(".no-result").innerHTML =""
         } else {
@@ -62,12 +67,14 @@ const Home = () => {
 
   return (
     <>
-      <div className="container-fluid">
+      <div className="container-fluid ">
         <div className="card-container p-3 d-flex flex-column gap-3 justify-content-center align-items-center mb-5 ">
           {/* search area */}
           <div className="d-flex flex-row justify-content-between text-align-center p-3 align-items-center mb-5 w-100">
             <span className="d-lg-none d-md-none"></span>
-            <h4 className="d-none d-md-flex d-md-flex bg-transparent mb-4">All posts :</h4>
+            <h4 className="d-none d-md-flex d-md-flex bg-transparent mb-4">
+              All posts :
+            </h4>
             {/* search form */}
             <form class="d-flex input-group w-auto">
               <input
@@ -126,21 +133,23 @@ const Home = () => {
                   <i class="fas fa-heart text-danger me-2"></i> Like
                 </div>
                 {/* comment btn */}
-                <NavLink to="/posts/details/225L7PKKV25CC"
-                  className="reactions comment" >
-                    <i class="fas fa-comment me-1"></i> comment
+                <NavLink
+                  to="/posts/details/225L7PKKV25CC"
+                  className="reactions comment"
+                >
+                  <i class="fas fa-comment me-1"></i> comment
                 </NavLink>
                 {/* share btn */}
                 <div
                   className="reactions share"
                   onClick={(e) => {
                     setShowModal(!showModal);
-                    setSharedURL("posts/details/225L7PKKV25CCP1")
+                    setSharedURL("posts/details/225L7PKKV25CCP1");
                     setSharedTitle(
                       e.target.parentNode.parentNode.querySelector(".post-body")
-                      ?
-                      e.target.parentNode.parentNode.querySelector(".post-body")
-                        .innerText
+                        ? e.target.parentNode.parentNode.querySelector(
+                            ".post-body"
+                          ).innerText
                         : "Please go back and share again !"
                     );
                   }}
@@ -152,14 +161,14 @@ const Home = () => {
             {/* post card 2*/}
             <div
               className="card-items shadow-4-strong "
-              data-name="Hiba Jouablia"
+              data-name="Isra Mansour"
             >
               {/* card top-logo */}
               <div className="logo">
                 <img src={avatar_tow} className="shadow-4-strong" alt="" />
               </div>
               {/* user post name */}
-              <h4>Hiba Jouablia</h4>
+              <h4>Isra Mansour</h4>
               {/* post date */}
               <p>posted : 2 hours ago</p>
               {/* post content */}
@@ -191,14 +200,13 @@ const Home = () => {
                   className="reactions share"
                   onClick={(e) => {
                     setShowModal(!showModal);
-                    setSharedURL("posts/details/225L7PKKV25CCP2")
+                    setSharedURL("posts/details/225L7PKKV25CCP2");
                     setSharedTitle(
                       e.target.parentNode.parentNode.querySelector(".post-body")
-                        ?
-                        e.target.parentNode.parentNode.querySelector(".post-body")
-                        .innerText
-
-                         : "Please go back and share again !"
+                        ? e.target.parentNode.parentNode.querySelector(
+                            ".post-body"
+                          ).innerText
+                        : "Please go back and share again !"
                     );
                   }}
                 >
@@ -248,13 +256,12 @@ const Home = () => {
                   className="reactions share"
                   onClick={(e) => {
                     setShowModal(!showModal);
-                    setSharedURL("posts/details/225L7PKKV25CCP3")
+                    setSharedURL("posts/details/225L7PKKV25CCP3");
                     setSharedTitle(
                       e.target.parentNode.parentNode.querySelector(".post-body")
-                        ?
-                        e.target.parentNode.parentNode.querySelector(".post-body")
-                        .innerText
-                        
+                        ? e.target.parentNode.parentNode.querySelector(
+                            ".post-body"
+                          ).innerText
                         : "Please go back and share again !"
                     );
                   }}

@@ -26,18 +26,23 @@ import Messages from "./pages/messages/messages";
 import User from "./pages/user/user";
 // import post details component
 import Details from "./pages/post-details/details";
-// dark light mode switch
 
 function App() {
   // set user login status
+  const [authentificated, setAuthentificated] = useState(false);
   const [user, setUser] = useState(false);
   // check if user is already loged in
 
-  useEffect(() => {
+  setInterval(() => {
     const login = localStorage.getItem("user-login");
     if (login) {
       setUser(true);
     }
+  }, 1);
+
+  // set athentification to true to redirect user to home page
+  useEffect(() => {
+    user && setAuthentificated(true);
   });
 
   return (
@@ -46,10 +51,23 @@ function App() {
 
       <div className="App">
         <Routes>
-          <Route exact path="/" element={user ? <Home /> : <Login />} />
-          <Route path="/notifications" element={<Notifications />} />
-          <Route path="/messages" element={<Messages />} />
-          <Route path="/profile" element={<User />} />
+          <Route
+            exact
+            path="/"
+            element={authentificated ? <Home /> : <Login />}
+          />
+          <Route
+            path="/notifications"
+            element={authentificated ? <Notifications /> : <Login />}
+          />
+          <Route
+            path="/messages"
+            element={authentificated ? <Messages /> : <Login />}
+          />
+          <Route
+            path="/profile"
+            element={authentificated ? <User /> : <Login />}
+          />
           <Route path="/posts/details/:any" element={<Details />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

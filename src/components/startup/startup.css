@@ -1,23 +1,18 @@
-/* This is a general style for startup component */
-
-body {
-  overflow-y: scroll !important;
-}
 
 /* container paernt styling */
 .container-fluid{
 box-sizing: border-box;
 padding: 0px;
 position: absolute;
-top: 0;
-left: 0;
+height: 100vh;
+margin-top: 0 !important;
+bottom: 0;
 background-color: white;
 transition: .5s;
 z-index: 1000;
 }
 
 .container-fluid.hide{
-  
   opacity: 0;
 left: -300vh;
   transition: .5s;
@@ -33,10 +28,11 @@ left: -300vh;
   justify-content: center;
   align-items: center;
   border-radius: 0 0 200px 200px;
-
+margin-top: 0 !important;
   transition: .5s;
 }
 .startup-logo {
+  margin-top: 0 !important;
   width: 350px !important;
 height: 350px !important;
   border-radius: 50%;

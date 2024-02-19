@@ -224,7 +224,7 @@ const User = () => {
                       alt="chat"
                     />
                     <div className="chat-details w-100 text-start">
-                      <strong className="mt-2">Hiba</strong>
+                      <strong className="mt-2">Sarra</strong>
                       <p>
                         <i class="fas fa-check text-success icon-user-list"></i>{" "}
                         friend
@@ -270,7 +270,7 @@ const User = () => {
                         alt="chat"
                       />
                       <div className="chat-details w-100 text-start">
-                        <strong className="mt-2">Hiba</strong>
+                        <strong className="mt-2">Faycel</strong>
                         <p className="row-center">
                           <i class="fas fa-clock"></i> waiting
                         </p>
@@ -324,7 +324,7 @@ const User = () => {
                         alt="chat"
                       />
                       <div className="chat-details w-100 text-start">
-                        <strong className="mt-2">Khaled</strong>
+                        <strong className="mt-2">John</strong>
                         <p>
                           <i class="fas fa-user-plus text-primary"></i> user
                         </p>
