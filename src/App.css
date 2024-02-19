@@ -1,1 +1,16 @@
+/* body global style */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: whitesmoke;
+  width: 100%;
+  height: 100vh !important;
+  margin: 0;
+  overflow-y: scroll;
 
+  }
+  

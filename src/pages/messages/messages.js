@@ -43,8 +43,8 @@ const Messages = () => {
   const [modalImageSrc, setModalImageSrc] = useState("");
   // show/hide message image modal state
   const [getMessageModal, setGetMessageModal] = useState(false);
-    // preview image src state
-    const [fileUrl, setFileUrl] = useState("");
+  // preview image src state
+  const [fileUrl, setFileUrl] = useState("");
   // prevouis chat reference for reverse chats usage
   const previous = useRef(null);
   // filter previous chat by name
@@ -141,37 +141,35 @@ const Messages = () => {
   }, [scroll]);
   // get profile func
   const getProfile = () => {
-    setShowProfile(!showProfile);
+    setShowProfile(true);
   };
 
-    // preview image from input file 
-    const displayPostImage = (event) => {
-      // get input file value
-      const selectedFile = event.target.files[0];
-  
-      // Create object URL for the selected file
-      const objectUrl = URL.createObjectURL(selectedFile);
-      // push image src inside file url state
-      setFileUrl(objectUrl);
-      setGetMessageModal(true)
-    };
+  // preview image from input file
+  const displayPostImage = (event) => {
+    // get input file value
+    const selectedFile = event.target.files[0];
+
+    // Create object URL for the selected file
+    const objectUrl = URL.createObjectURL(selectedFile);
+    // push image src inside file url state
+    setFileUrl(objectUrl);
+    setGetMessageModal(true);
+  };
 
   return (
     // messages area parent
     <div
-      className="messages-area-parent h-100"
-      style={{ backgroundColor: "whitesmoke" }}
+      className="messages-area-parent"
     >
       {/* messages container ==> leftSideBar + chatBox */}
       <div
-        className="messages-container flex-center h-100"
-        style={{ backgroundColor: "whitesmoke" }}
+        className="messages-container flex-center "
       >
         {/*left side bar */}
         <div
           className={
             getSideBar
-              ? "left-bar  text-center active h-100"
+              ? "left-bar  text-center active"
               : "left-bar  text-center"
           }
           style={{ backgroundColor: "whitesmoke" }}
@@ -377,7 +375,7 @@ const Messages = () => {
                 class="fas fa-phone  border-end"
                 title="Audio call"
                 onClick={() => {
-                  setShowCallSection(!showCallSection);
+                  setShowCallSection(true);
                 }}
               ></i>
               <i
@@ -610,7 +608,6 @@ const Messages = () => {
                   placeholder="Tape message"
                   onChange={(e) => {
                     setMessage(e.target.value);
-                    
                   }}
                   onFocus={() => {
                     setShowEmojiPicker(false);
@@ -634,7 +631,12 @@ const Messages = () => {
                 <label htmlFor="file">
                   <i class="fas fa-image text-dark me-3 "></i>
                 </label>
-                <input type="file" id="file" className="d-none" onChange={displayPostImage} />
+                <input
+                  type="file"
+                  id="file"
+                  className="d-none"
+                  onChange={displayPostImage}
+                />
               </div>
               <button className="message-btn">
                 <i class="fas fa-arrow-up"></i>
@@ -654,7 +656,7 @@ const Messages = () => {
                 class="fas fa-arrow-left-long"
                 style={{ cursor: "pointer" }}
                 onClick={() => {
-                  setShowProfile(!showProfile);
+                  setShowProfile(false);
                 }}
               ></i>
             </div>
@@ -663,7 +665,7 @@ const Messages = () => {
               <div
                 data-src={userThree}
                 onClick={(e) => {
-                  setShowModal(!showModal);
+                  setShowModal(true);
                   setModalImageSrc(e.target.getAttribute("data-src"));
                 }}
                 style={{ cursor: "pointer" }}
@@ -726,7 +728,7 @@ const Messages = () => {
               <i
                 class="fas fa-xmark text-danger rounded border p-2 border-danger"
                 onClick={() => {
-                  setShowModal(!showModal);
+                  setShowModal(false);
                 }}
               ></i>
             </div>
@@ -746,44 +748,50 @@ const Messages = () => {
           {/* photo modal area end */}
           {/* message photo modal start */}
 
-<div className={getMessageModal ? "photo-modal show bg-night p-2 " : "photo-modal  p-2"}>
-  {/* modal header control */}
-<div className="d-flex flex-row card-header p-2 justify-content-between align-items-center mb-2 w-100">
-              <span className="text-info"><i class="far fa-image text-info"></i> Hamidos</span>
+          <div
+            className={
+              getMessageModal
+                ? "photo-modal show bg-night p-2 "
+                : "photo-modal  p-2"
+            }
+          >
+            {/* modal header control */}
+            <div className="d-flex flex-row card-header p-2 justify-content-between align-items-center mb-2 w-100">
+              <span className="text-info">
+                <i class="far fa-image text-info"></i> Hamidos
+              </span>
               <i
                 class="fas fa-xmark text-danger rounded border p-2 border-danger"
                 onClick={() => {
-                  setGetMessageModal(!getMessageModal);
+                  setGetMessageModal(false);
                 }}
               ></i>
             </div>
             {/* image area */}
-            <div className="card-body w-100">{fileUrl && (
-                        <img
-                          src={fileUrl}
-                          className="image-message"
-                          alt="Preview"
-                        />
-                      )}</div>
+            <div className="card-body w-100">
+              {fileUrl && (
+                <img src={fileUrl} className="image-message" alt="Preview" />
+              )}
+            </div>
             {/* message area */}
             <div className=" w-100 p-2">
-            <form className="image-message-form active border">
-                  <input
-                    type="text"
-                    className="image-message-input"
-                    placeholder="Add caption..."
-                  />
-                  <button className="image-message-btn">
-                    <i class="fas fa-arrow-up text-light"></i>
-                  </button>
-                </form>
+              <form className="image-message-form active border">
+                <input
+                  type="text"
+                  className="image-message-input"
+                  placeholder="Add caption..."
+                />
+                <button className="image-message-btn">
+                  <i class="fas fa-arrow-up text-light"></i>
+                </button>
+              </form>
             </div>
-</div>
+          </div>
 
           {/* message photo area end */}
         </div>
         {/*  chat box end */}
-        {/* audio and video call section */}
+        {/* audio , video call section + user image , name and status */}
         <div
           className={
             showCallSection
@@ -817,7 +825,7 @@ const Messages = () => {
               <button
                 className="btn btn-danger btn-floating"
                 onClick={() => {
-                  setShowCallSection(!showCallSection);
+                  setShowCallSection(false);
                 }}
               >
                 <i class="fas fa-phone-slash"></i>
