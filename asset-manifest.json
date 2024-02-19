@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Messenger/static/css/main.7dd6b4e0.css",
-    "main.js": "/Messenger/static/js/main.e3b46487.js",
+    "main.css": "/Messenger/static/css/main.ce9c2dcb.css",
+    "main.js": "/Messenger/static/js/main.cc006c9e.js",
     "static/media/fleurs.jpeg": "/Messenger/static/media/fleurs.c4418ddde850faaa0a6c.jpeg",
     "static/media/flour.webp": "/Messenger/static/media/flour.4577b7f408dedb962b1a.webp",
     "static/media/chat-app-logo.png": "/Messenger/static/media/chat-app-logo.f6d02cfd0c448e0e920e.png",
@@ -14,11 +14,11 @@
     "static/media/user4.png": "/Messenger/static/media/user4.0d14c6999b4a5c8e86a7.png",
     "static/media/dark-mode.png": "/Messenger/static/media/dark-mode.200fc7ef3b57c90aa4ef.png",
     "index.html": "/Messenger/index.html",
-    "main.7dd6b4e0.css.map": "/Messenger/static/css/main.7dd6b4e0.css.map",
-    "main.e3b46487.js.map": "/Messenger/static/js/main.e3b46487.js.map"
+    "main.ce9c2dcb.css.map": "/Messenger/static/css/main.ce9c2dcb.css.map",
+    "main.cc006c9e.js.map": "/Messenger/static/js/main.cc006c9e.js.map"
   },
   "entrypoints": [
-    "static/css/main.7dd6b4e0.css",
-    "static/js/main.e3b46487.js"
+    "static/css/main.ce9c2dcb.css",
+    "static/js/main.cc006c9e.js"
   ]
 }
