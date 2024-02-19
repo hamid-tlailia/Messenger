@@ -67,7 +67,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="container-fluid ">
+      <div className="home-page">
         <div className="card-container p-3 d-flex flex-column gap-3 justify-content-center align-items-center mb-5 ">
           {/* search area */}
           <div className="d-flex flex-row justify-content-between text-align-center p-3 align-items-center mb-5 w-100">

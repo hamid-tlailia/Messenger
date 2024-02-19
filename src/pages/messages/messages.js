@@ -148,8 +148,10 @@ const Messages = () => {
     // Create object URL for the selected file
     const objectUrl = URL.createObjectURL(selectedFile);
     // push image src inside file url state
-    setFileUrl(objectUrl);
-    setGetMessageModal(true);
+    if (selectedFile) {
+      setFileUrl(objectUrl);
+      setGetMessageModal(true);
+    }
   };
   // get hidden a for downloading image
   const downloadImageSRC = useRef(null);
@@ -793,6 +795,7 @@ const Messages = () => {
                     title="Reply message"
                     onClick={(e) => {
                       setShowModal(false);
+                      setScroll(true);
                       e.target.parentNode.parentNode.parentNode.querySelector(
                         ".message-photo"
                       )

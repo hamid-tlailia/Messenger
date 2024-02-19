@@ -604,7 +604,7 @@
   align-items: center;
   gap: 20px;
   padding: 8px;
-  background-color: rgba(0, 0, 0, 0.663);
+  background-color: #0f0f0fe7;
   width: 100%;
   height: 110%;
   color: white;
@@ -626,6 +626,7 @@
   height: 100%;
   z-index: 10025555155;
 }
+
 
 .photo-modal i {
   color: firebrick;
