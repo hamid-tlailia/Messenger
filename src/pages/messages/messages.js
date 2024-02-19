@@ -91,8 +91,6 @@ const Messages = () => {
     setMessage(message + emoji.emoji);
   };
 
-  // get chat container to auto scroll when a reply message
-  const chat_container = useRef(null);
   // handle reply for himself
 
   const handleReplySentMessage = (e) => {
@@ -128,14 +126,17 @@ const Messages = () => {
   };
   // get chat btn to  auto focus when user click reply btn
   const chat_btn = useRef(null);
+  
+  // get chat container to auto scroll when a reply message
+  // const chat_container = useRef(null);
   // automaticly scroll chat footer when a reply button is clicked
 
   useEffect(() => {
-    if (chat_container.current && scroll === true) {
-      chat_container.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+    if ( scroll === true) {
+      // chat_container.current.scrollIntoView({
+      //   behavior: "smooth",
+      //   block: "start",
+      // });
       chat_btn.current.focus();
     }
   }, [scroll]);
@@ -551,7 +552,7 @@ const Messages = () => {
             </div>
           </div>
           {/* chat box footer */}
-          <div className="card-footer chat-footer  p-3" ref={chat_container}>
+          <div className="card-footer chat-footer  p-3" >
             {/* replied message and images area */}
             {
               // check if sender reply himself's message
