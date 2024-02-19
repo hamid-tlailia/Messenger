@@ -42,7 +42,7 @@
   position: relative;
   background-color: transparent !important;
   height: 100% !important;
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 
 /* left side bar style  ============================== IMPOETANT ===========================*/
