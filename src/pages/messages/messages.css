@@ -420,6 +420,7 @@
 .chat-footer {
   position: absolute;
   bottom: 0;
+  left: 0;
   height: max-content !important;
   width: 100%;
   background-color: white;
@@ -429,6 +430,7 @@
 @media screen and (max-width: 700px) {
   .chat-footer {
     position: absolute;
+    left: 0 !important;
     height: max-content !important;
     width: 100%;
     background-color: white;
