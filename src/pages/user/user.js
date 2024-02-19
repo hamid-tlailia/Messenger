@@ -49,7 +49,7 @@ const User = () => {
     // Create object URL for the selected file
 
     // push image src inside file url state
-    if (selectedImage && selectedImage.size > 21650) {
+    if (selectedImage && selectedImage.size > 444500) {
       alert("please an equivalent size and try agin");
     } else {
       const imageUrl = URL.createObjectURL(selectedImage);

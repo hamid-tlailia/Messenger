@@ -92,6 +92,9 @@ const Messages = () => {
     setMessage(message + emoji.emoji);
   };
 
+  // get chat btn to  auto focus when user click reply btn
+  const chat_btn = useRef(null);
+
   // handle reply for himself
 
   const handleReplySentMessage = (e) => {
@@ -102,9 +105,11 @@ const Messages = () => {
     if (sent_message) {
       setReplySentMessage(sent_message.innerText);
       setReplyReceivedMessage("");
+      setReplyImageMessage(null);
     } else {
       setReplySentMessage("Something went wrong");
       setReplyReceivedMessage("");
+      setReplyImageMessage(null);
     }
   };
 
@@ -120,13 +125,29 @@ const Messages = () => {
     if (received_message) {
       setReplyReceivedMessage(received_message.innerText);
       setReplySentMessage("");
+      setReplyImageMessage(null);
     } else {
       setReplyReceivedMessage("Something went wrong");
       setReplySentMessage("");
+      setReplyImageMessage(null);
     }
   };
-  // get chat btn to  auto focus when user click reply btn
-  const chat_btn = useRef(null);
+  // Hnadle reply message image
+  const replyPhoto = (e) => {
+    chat_btn.current.focus();
+    setShowModal(false);
+    const imageSRC =
+      e.target.parentNode.parentNode.parentNode.querySelector(".message-photo");
+    if (imageSRC) {
+      setReplyImageMessage(imageSRC.src);
+      setReplyReceivedMessage("");
+      setReplySentMessage("");
+    } else {
+      setReplyImageMessage("error");
+      setReplyReceivedMessage("");
+      setReplySentMessage("");
+    }
+  };
 
   // automaticly scroll chat footer when a reply button is clicked
 
@@ -793,19 +814,7 @@ const Messages = () => {
                   <i
                     className="fas fa-reply text-primary"
                     title="Reply message"
-                    onClick={(e) => {
-                      setShowModal(false);
-                      setScroll(true);
-                      e.target.parentNode.parentNode.parentNode.querySelector(
-                        ".message-photo"
-                      )
-                        ? setReplyImageMessage(
-                            e.target.parentNode.parentNode.parentNode.querySelector(
-                              ".message-photo"
-                            ).src
-                          )
-                        : setReplyImageMessage("error");
-                    }}
+                    onClick={replyPhoto}
                   ></i>
                   {/* download image icon */}
                   <i
