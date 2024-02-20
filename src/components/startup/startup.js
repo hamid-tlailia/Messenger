@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./startup.css";
 // import logo image
-import logo from "./public/images/flour.webp";
+import logo from "./public/images/ai-logo.jpg";
 import nextLogo from './public/images/chat-app-logo.png'
 import { NavLink } from "react-router-dom";
 
@@ -16,7 +16,7 @@ const Startup = () => {
     "logo" : `${logo}`,
     "title" : "Explore new AI messenger",
     "description" : 
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia ratione nostrum alias perferendis obcaecati 1",
+    "Our Messenger AI app revolutionizes the way you communicate by integrating cutting-edge artificial intelligence directly into your messaging experience",
     "step" : false,
     "skip" :false
   });
@@ -29,9 +29,9 @@ const Startup = () => {
         <img src={getNext.logo} className="img-fluid startup-logo" alt="logo-startup" />
         </div>
         {/* title */}
-        <h3 className="title ms-3">{getNext.title} </h3>
+        <h3 className="title ms-3 mt-4">{getNext.title} </h3>
         {/* little description */}
-        <p className="description">
+        <p className="description ">
         {getNext.description}
         </p>
         {/* steps */}
@@ -49,11 +49,14 @@ const Startup = () => {
           <NavLink>
           <button className="btn btn-primary text-light button go-btn" onClick={(e) => {
             setGetNext({
-              background : "bg-success",
+              background : "bg-info",
               logo : nextLogo,
               title : "Get ready to start soon !",
               description : 
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia ratione nostrum alias perferendis obcaecati 2",
+              `
+             AI-Powered Conversations: Engage in natural, intelligent conversations with our AI chatbot that  
+             understands context, sentiment, and user preferences.
+              `,
               step : true,
               "skip" : true
             })

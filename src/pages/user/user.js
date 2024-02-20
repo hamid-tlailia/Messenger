@@ -3,11 +3,12 @@ import React, { useEffect, useRef, useState } from "react";
 import "./user.css";
 // import user image
 import userThree from "../public/images/user3.png";
-// import dark/light mode icon
-import dark_light from "../public/images/dark-mode.png";
+// import useForm react hook for form validation
+import { useForm } from "react-hook-form";
 const User = () => {
   // set a state for changing update and validate button display
-  const [updateName, setUpdateName] = useState(false);
+  const [updateFirstName, setUpdateFirstName] = useState(false);
+  const [updateLastName, setUpdateLastName] = useState(false);
   const [updateEmail, setUpdateEmail] = useState(false);
   // set states for friends list and friends request to toggle show
   const [showRequestList, setShowRequestList] = useState("friends-list");
@@ -27,16 +28,21 @@ const User = () => {
       'To enable dark mode in this app : .\n 1 : Write in your browser url : browser-type , exp : "chrome://flags" .\n 2 : In saerch area write "Auto dark mode" .\n 3 : Choose the 4th option .\n 4 : Relaunch chrome .\n NB : if you want to disable dark mode : repeat the same steps and turn "Auto dark mode" to "Default"'
     );
   };
-
+  // get post btn
+  const postBtn = useRef(null);
   // preview image from input file in create post
   const displayPostImage = (event) => {
     // get input file value
     const selectedFile = event.target.files[0];
-
-    // Create object URL for the selected file
-    const objectUrl = URL.createObjectURL(selectedFile);
-    // push image src inside file url state
-    setFileUrl(objectUrl);
+    if (selectedFile) {
+      // Create object URL for the selected file
+      const objectUrl = URL.createObjectURL(selectedFile);
+      // push image src inside file url state
+      setFileUrl(objectUrl);
+      // remove disabled class from submit btn
+      const postBTN = postBtn.current;
+      postBTN.classList.remove("disabled");
+    }
   };
   // get input image by refrence to clear value after change
   const profileImageInput = useRef(null);
@@ -56,6 +62,81 @@ const User = () => {
       if (profileImageInput.current) profileImageInput.current.value = null;
     }
   };
+
+  // firstname , lastname and email  validation
+  const {
+    register: registerUpdatedInfos,
+    handleSubmit: handleUpdatedInfos,
+    reset: updateInfosReset,
+    formState: { errors: UpdateInfosErrors },
+  } = useForm({
+    mode: "onBlur",
+    defaultValues: {
+      firstname: "Hamidos",
+      lastname: "Tlailia",
+      email: "tlailia757@gmail.com",
+    },
+  });
+  // password update form validation
+  const {
+    register: registerUpdatePassword,
+    handleSubmit: handleUpdatePassword,
+    reset: updatePasswordReset,
+    formState: { errors: updatePasswordErrors },
+  } = useForm({
+    mode: "onBlur",
+  });
+  // update user infos func
+  const handleUpdate = (data, event) => {
+    event.preventDefault();
+    console.log("Updated infos : ", data);
+    // reset form data
+    updateInfosReset();
+  };
+  // inputs value spaces control
+  const isNotEmptyOrSpaces = (value) => {
+    return value.trim().length !== 0; // Check if the value is not empty or contains only spaces
+  };
+  // update user password func
+  const updatePassword = (data, event) => {
+    console.log("Updated password : ", data);
+    // reset form data
+    updatePasswordReset();
+  };
+
+  // close edit states for read only after update user infos
+  const cloeseEditStates = () => {
+    setUpdateFirstName(false);
+    setUpdateLastName(false);
+    setUpdateEmail(false);
+  };
+  // get input file for post image
+  const fileInput = useRef(null);
+  // Remove post image btn
+  const closePostImage = (e) => {
+    setFileUrl("");
+    const inputFile = fileInput.current;
+    if (inputFile) inputFile.value = "";
+    postBtn.current.classList.add("disabled");
+  };
+
+  // remove disble class for submit post btn
+
+  const removeDisabledClass = (e) => {
+    const postBTN = postBtn.current;
+    // remove disabled class from submit btn
+    if (e.target.value.trim().length !== 0) {
+      postBTN.classList.remove("disabled");
+    } else if (
+      e.target.value.trim().length === 0 &&
+      fileInput.current.value !== ""
+    ) {
+      postBTN.classList.remove("disabled");
+    } else {
+      postBTN.classList.add("disabled");
+    }
+  };
+
   return (
     <div className="user-container container-fluid">
       <div className="profile-content">
@@ -89,7 +170,10 @@ const User = () => {
                   />
                   {/* set or cancel options */}
                   <div className="d-flex flex-row  justify-content-between align-items-center gap-2">
-                    <button className="btn btn-light  shadow-2  btn-floating fs-6 p-0">
+                    <button
+                      type="submit"
+                      className="btn btn-light  shadow-2  btn-floating fs-6 p-0"
+                    >
                       <i class="fas fa-circle-check  text-success"></i>
                     </button>
                     <button
@@ -110,7 +194,7 @@ const User = () => {
                 className="text-primary p-2 shadow-2"
                 style={{ cursor: "pointer" }}
                 onClick={() => {
-                  setShowModal(!showModal);
+                  setShowModal(true);
                 }}
               >
                 <i class="fas fa-list"></i> friends list
@@ -148,31 +232,91 @@ const User = () => {
           </div>
           <hr />
           {/* name and email address update form */}
-          <form className="d-flex flex-column">
-            <label className="label">Name :</label>
+
+          {/* handle update infos form errors */}
+
+          {/* firstname error handler aria */}
+          {UpdateInfosErrors.firstname && (
+            <div className="alert alert-danger p-2 w-100">
+              Firstname required and must be between 3 and 10 character
+            </div>
+          )}
+          {/* lastname error handler aria */}
+          {UpdateInfosErrors.lastname && (
+            <div className="alert alert-danger p-2 w-100">
+              Lastname required and must be between 3 and 10 character
+            </div>
+          )}
+          {/* email error handler aria */}
+          {UpdateInfosErrors.email && (
+            <div className="alert alert-danger p-2 w-100">
+              Please enter a valid email
+            </div>
+          )}
+          <form
+            className="d-flex flex-column mb-4"
+            onSubmit={handleUpdatedInfos(handleUpdate)}
+          >
+            <label className="label">Firstname :</label>
             <div className="d-flex flex-row gap-2 justify-content-center align-items-center update-area mb-4">
               <input
                 type="text"
                 className={
-                  updateName ? "name-input inputs update" : "name-input inputs"
+                  updateFirstName
+                    ? "name-input inputs update"
+                    : "name-input inputs"
                 }
                 id="name"
-                placeholder="Hamidos"
+                placeholder="Enter firstname"
+                {...registerUpdatedInfos("firstname", {
+                  required: true,
+                  minLength: 3,
+                  maxLength: 10,
+                  validate: {
+                    notEmptyOrSpaces: (value) => isNotEmptyOrSpaces(value),
+                  },
+                })}
               />
               <i
                 className="far fa-pen-to-square"
                 onClick={(e) => {
-                  setUpdateName(!updateName);
-                  !updateName &&
+                  setUpdateFirstName(!updateFirstName);
+                  !updateFirstName &&
                     e.target.parentNode.querySelector("#name").focus();
                 }}
               ></i>
-              {updateName && (
-                <i className="far fa-circle-check fs-4 text-success"></i>
-              )}
+            </div>
+            <label className="label">Lastname :</label>
+            <div className="d-flex flex-row gap-2 justify-content-center align-items-center update-area mb-4">
+              <input
+                type="text"
+                className={
+                  updateLastName
+                    ? "name-input inputs update"
+                    : "name-input inputs"
+                }
+                id="name"
+                placeholder="Enter lastname"
+                {...registerUpdatedInfos("lastname", {
+                  required: true,
+                  minLength: 3,
+                  maxLength: 10,
+                  validate: {
+                    notEmptyOrSpaces: (value) => isNotEmptyOrSpaces(value),
+                  },
+                })}
+              />
+              <i
+                className="far fa-pen-to-square"
+                onClick={(e) => {
+                  setUpdateLastName(!updateLastName);
+                  !updateLastName &&
+                    e.target.parentNode.querySelector("#name").focus();
+                }}
+              ></i>
             </div>
             <label className="label">Email :</label>
-            <div className="d-flex flex-row gap-2 justify-content-center align-items-center update-area">
+            <div className="d-flex flex-row gap-2 mb-4 justify-content-center align-items-center update-area">
               <input
                 type="email"
                 id="email"
@@ -181,7 +325,14 @@ const User = () => {
                     ? "email-input inputs update"
                     : "email-input inputs"
                 }
-                placeholder="tlailia757@gmail.com"
+                placeholder="Enter email"
+                {...registerUpdatedInfos("email", {
+                  required: true,
+                  pattern: /^\S+@\S+$/i,
+                  validate: {
+                    notEmptyOrSpaces: (value) => isNotEmptyOrSpaces(value),
+                  },
+                })}
               />
               <i
                 className="far fa-pen-to-square"
@@ -191,11 +342,29 @@ const User = () => {
                     e.target.parentNode.querySelector("#email").focus();
                 }}
               ></i>
-              {updateEmail && (
-                <i className="far fa-circle-check fs-4 text-success"></i>
-              )}
             </div>
+            <button
+              className="btn btn-primary"
+              style={{ width: "max-content" }}
+              type="submit"
+              onClick={cloeseEditStates}
+            >
+              save
+            </button>
           </form>
+          {/* update password form errors  handler */}
+          {/* old password error handler aria */}
+          {updatePasswordErrors.oldPassword && (
+            <div className="alert alert-danger p-2 w-100">
+              Old password required and must be between 6 and 16 character
+            </div>
+          )}
+          {/* new password error handler aria */}
+          {updatePasswordErrors.newPassword && (
+            <div className="alert alert-danger p-2 w-100">
+              New password required and must be between 6 and 16 character
+            </div>
+          )}
           {/* update password form */}
           <hr />
           <div className="password-update-area">
@@ -203,18 +372,39 @@ const User = () => {
             <p>
               ensure your account is using a long rondom password to stay secure
             </p>
-            <form className="d-flex flex-column flex-lg-row flex-md-row justify-content-start gap-3 align-items-start">
+            <form
+              className="d-flex flex-column flex-lg-row flex-md-row justify-content-start gap-3 align-items-start"
+              onSubmit={handleUpdatePassword(updatePassword)}
+            >
               <input
                 type="text"
                 className="password-input"
                 placeholder="Old password"
+                {...registerUpdatePassword("oldPassword", {
+                  required: true,
+                  minLength: 6,
+                  maxLength: 16,
+                  validate: {
+                    notEmptyOrSpaces: (value) => isNotEmptyOrSpaces(value),
+                  },
+                })}
               />
               <input
                 type="text"
                 className="password-input"
                 placeholder="New password"
+                {...registerUpdatePassword("newPassword", {
+                  required: true,
+                  minLength: 6,
+                  maxLength: 16,
+                  validate: {
+                    notEmptyOrSpaces: (value) => isNotEmptyOrSpaces(value),
+                  },
+                })}
               />
-              <button className="btn btn-primary">save</button>
+              <button type="submit" className="btn btn-primary">
+                save
+              </button>
             </form>
           </div>
           {/* friends list area start */}
@@ -230,7 +420,7 @@ const User = () => {
               <i
                 class="fas fa-xmark close-modal"
                 onClick={() => {
-                  setShowModal(!showModal);
+                  setShowModal(false);
                 }}
               ></i>
             </div>
@@ -407,26 +597,36 @@ const User = () => {
                     Please chose your image first to see however it is suitable
                     with your post
                   </div>
-                  <div className="d-flex flex-column justify-content-center align-items-center gap-1">
+                  <form className="d-flex flex-column justify-content-center align-items-center post-form gap-1">
                     {/* Display image from input file */}
-                    <div className="image-display-area w-100 p-2 mb-4">
-                      {fileUrl && (
-                        <img
-                          src={fileUrl}
-                          className="preview-image"
-                          alt="Preview"
-                        />
-                      )}
-                    </div>
+                    {fileUrl && (
+                      <div className="image-display-area w-100 p-2 mb-4">
+                        {/* Remove post image */}
+                        <span
+                          className="close-preview-post-image"
+                          onClick={closePostImage}
+                        >
+                          X
+                        </span>
+                        {fileUrl && (
+                          <img
+                            src={fileUrl}
+                            className="preview-image"
+                            alt="Preview"
+                          />
+                        )}
+                      </div>
+                    )}
                     {/* User post text area */}
                     <div className="form-floating w-100">
                       <textarea
-                        className="form-control "
+                        className="form-control h-50"
                         cols={59}
-                        id="textAreaExample"
+                        id="post-input"
                         rows={6}
                         data-mdb-input-init
                         style={{ resize: "none" }}
+                        onChange={removeDisabledClass}
                       ></textarea>
                       <label className="form-label" for="textAreaExample">
                         What is in your mind 😊
@@ -443,12 +643,19 @@ const User = () => {
                           className="d-none"
                           id="image-file"
                           onChange={displayPostImage}
+                          ref={fileInput}
                         />
                         <i class="far fa-image"></i> Photos
                       </label>
-                      <button className="btn btn-dark">post</button>
+                      <button
+                        type="submit"
+                        className="btn post-btn btn-dark disabled"
+                        ref={postBtn}
+                      >
+                        post
+                      </button>
                     </div>
-                  </div>
+                  </form>
                 </div>
                 {/* create post area end */}
               </div>

@@ -7,9 +7,9 @@
   align-items: center;
   padding: 20px;
   height: max-content;
-  overflow: hidden;
+  overflow-y: auto !important;
   z-index: 100;
-  margin-top: 10vh;
+  margin-top: 0;
   width: 100%;
 }
 
@@ -22,7 +22,7 @@
 .forms {
   position: relative;
   width: 100% !important;
-  overflow: hidden !important;
+  overflow-y: auto !important;
   z-index: 100;
   padding: 12px;
 height: 80vh;

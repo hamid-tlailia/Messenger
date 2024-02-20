@@ -219,6 +219,7 @@
     top: auto;
     transition: 0.4s;
     margin-bottom: 10vh !important;
+    border: none !important;
   }
 }
 /* chat header style */
@@ -629,7 +630,6 @@
   z-index: 10025555155;
 }
 
-
 .photo-modal i {
   color: firebrick;
   cursor: pointer;
@@ -683,6 +683,7 @@
 /* reply an image message layout */
 .reply-section {
   background-color: black;
+  border: 1px solid wheat;
   border-radius: 20px;
 }
 .reply {

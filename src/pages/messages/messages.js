@@ -10,14 +10,16 @@ import userFive from "../public/images/user5.png";
 // import emoji picker
 import EmojiPicker from "emoji-picker-react";
 // import toast modal
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { toast } from "react-toastify";
 // import message photo example
 import photo from "../public/images/fleurs.jpeg";
 import { NavLink } from "react-router-dom";
 // import verified icon
 import verified from "../public/images/téléchargement.png";
+// import useForm react hook for message form validation
+import { useForm } from "react-hook-form";
+
 const Messages = () => {
   // left side bar state
   const [getSideBar, setGetSideBar] = useState(false);
@@ -34,8 +36,6 @@ const Messages = () => {
   const [replySentMessage, setReplySentMessage] = useState("");
   const [replyReceivedMessage, setReplyReceivedMessage] = useState("");
   const [replyImageMessage, setReplyImageMessage] = useState(null);
-  // scroll chat state
-  const [scroll, setScroll] = useState(false);
   // user profile show/hide state
   const [showProfile, setShowProfile] = useState(false);
   // photo modal show/hide state
@@ -99,7 +99,7 @@ const Messages = () => {
 
   const handleReplySentMessage = (e) => {
     // set scroll to true to make auto scroll for chat footer
-    setScroll(true);
+    chat_btn.current.focus();
     const sent_message =
       e.target.parentNode.parentNode.querySelector(".initial-message");
     if (sent_message) {
@@ -117,7 +117,7 @@ const Messages = () => {
 
   const handleReplyReceivedMessage = (e) => {
     // set scroll to true to make auto scroll for chat footer
-    setScroll(true);
+    chat_btn.current.focus();
     const received_message =
       e.target.parentNode.parentNode.parentNode.querySelector(
         ".initial-message"
@@ -149,13 +149,6 @@ const Messages = () => {
     }
   };
 
-  // automaticly scroll chat footer when a reply button is clicked
-
-  useEffect(() => {
-    if (scroll === true) {
-      chat_btn.current.focus();
-    }
-  }, [scroll]);
   // get profile func
   const getProfile = () => {
     setShowProfile(true);
@@ -183,6 +176,17 @@ const Messages = () => {
       downloadImageSRC.current.click();
     }
   };
+
+  // send message btn func
+  const handleMessage = (e) => {
+    e.preventDefault();
+    if (message.trim().length === 0) {
+      toast.error("please type a word to send");
+    } else {
+      // handle register message logic here
+    }
+  };
+
   return (
     // messages area parent
     <div className="messages-area-parent">
@@ -367,7 +371,7 @@ const Messages = () => {
         <div
           className={
             getSideBar
-              ? "chat-box text-align-left active h-100"
+              ? "chat-box text-align-left  border-danger active h-100"
               : "chat-box text-align-left h-100"
           }
         >
@@ -597,7 +601,6 @@ const Messages = () => {
                         setReplySentMessage("");
                         window.scrollTo({ top: 0, behavior: "smooth" });
                         // set scroll to false to close auto scroll for chat footer
-                        setScroll(false);
                       }}
                     >
                       X
@@ -619,7 +622,6 @@ const Messages = () => {
                         setReplyReceivedMessage("");
                         window.scrollTo({ top: 0, behavior: "smooth" });
                         // set scroll to false to close auto scroll for chat footer
-                        setScroll(false);
                       }}
                     >
                       X
@@ -662,13 +664,15 @@ const Messages = () => {
               )
             }
             {/* message form */}
-            <form className="message-form">
+            <form className="message-form" onSubmit={handleMessage}>
+              {/* Epmty input message error handler */}
+
               <div className="d-flex flex-row justify-content-between align-items-center gap-2 icons">
                 <input
                   className="message-input"
                   value={message}
                   ref={chat_btn}
-                  type="search"
+                  type="text"
                   placeholder="Tape message"
                   onChange={(e) => {
                     setMessage(e.target.value);
@@ -702,7 +706,7 @@ const Messages = () => {
                   onChange={displayPostImage}
                 />
               </div>
-              <button className="message-btn">
+              <button className="message-btn" type="submit">
                 <i class="fas fa-arrow-up"></i>
               </button>
             </form>
@@ -879,7 +883,7 @@ const Messages = () => {
         <div
           className={
             showCallSection
-              ? "call-section-parent p-3 bg-dark show"
+              ? "call-section-parent p-3 bg-dark  show"
               : "call-section-parent p-3 bg-dark"
           }
         >

@@ -73,7 +73,7 @@ const Home = () => {
           <div className="d-flex flex-row justify-content-between text-align-center p-3 align-items-center mb-5 w-100">
             <span className="d-lg-none d-md-none"></span>
             <h4 className="d-none d-md-flex d-md-flex bg-transparent mb-4">
-              All posts :
+              All posts
             </h4>
             {/* search form */}
             <form class="d-flex input-group w-auto">
@@ -82,11 +82,14 @@ const Home = () => {
                 className="form-control rounded mb-4 bg-transparent"
                 placeholder="Search"
                 aria-label="Search"
+                id="search"
                 aria-describedby="search-addon"
                 onChange={filterPosts}
               />
               <span className="input-group-text border-0" id="search-addon">
-                <i className="fas fa-search"></i>
+                <label htmlFor="search">
+                  <i className="fas fa-search"></i>
+                </label>
               </span>
             </form>
           </div>
@@ -121,11 +124,16 @@ const Home = () => {
                 className="position-relative w-100 post-image"
                 alt=""
               />
-              {/* likes number */}
-              <span className="d-flex flex-row justify-content-start align-items-center w-100 mb-4">
-                <i class="fas fa-heart text-danger me-1 mt-1"></i>you and 120
-                others
-              </span>
+              {/* likes number + comments */}
+              <div className="d-flex flex-row justify-content-between align-items-center mt-2 mb-3 w-100">
+                <span className="d-flex flex-row justify-content-start align-items-center ">
+                  <i class="fas fa-heart text-danger me-1 mt-1"></i>you and 120
+                  others
+                </span>
+                <span className="d-flex flex-row justify-content-start align-items-center ">
+                  83 comments
+                </span>
+              </div>
               {/* reactions btns container */}
               <div className="d-flex flex-row justify-content-center align-items-center gap-3">
                 {/* like btn */}
