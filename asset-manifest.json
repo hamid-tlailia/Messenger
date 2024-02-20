@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/Messenger/static/css/main.5258d983.css",
-    "main.js": "/Messenger/static/js/main.85ef7f12.js",
+    "main.css": "/Messenger/static/css/main.21dce380.css",
+    "main.js": "/Messenger/static/js/main.d0e00a6c.js",
     "static/media/fleurs.jpeg": "/Messenger/static/media/fleurs.c4418ddde850faaa0a6c.jpeg",
-    "static/media/flour.webp": "/Messenger/static/media/flour.4577b7f408dedb962b1a.webp",
     "static/media/chat-app-logo.png": "/Messenger/static/media/chat-app-logo.f6d02cfd0c448e0e920e.png",
+    "static/media/ai-logo.jpg": "/Messenger/static/media/ai-logo.a2c5907bb53738784dcc.jpg",
     "static/media/ai.jpg": "/Messenger/static/media/ai.a2c5907bb53738784dcc.jpg",
     "static/media/téléchargement.png": "/Messenger/static/media/téléchargement.2b46d7bf7b193edc146e.png",
     "static/media/user3.png": "/Messenger/static/media/user3.ab45eb1d42b1faaf3d12.png",
@@ -12,13 +12,12 @@
     "static/media/user5.png": "/Messenger/static/media/user5.557587208eb9e232f2ca.png",
     "static/media/user2.png": "/Messenger/static/media/user2.a6143582309785dca610.png",
     "static/media/user4.png": "/Messenger/static/media/user4.0d14c6999b4a5c8e86a7.png",
-    "static/media/dark-mode.png": "/Messenger/static/media/dark-mode.200fc7ef3b57c90aa4ef.png",
     "index.html": "/Messenger/index.html",
-    "main.5258d983.css.map": "/Messenger/static/css/main.5258d983.css.map",
-    "main.85ef7f12.js.map": "/Messenger/static/js/main.85ef7f12.js.map"
+    "main.21dce380.css.map": "/Messenger/static/css/main.21dce380.css.map",
+    "main.d0e00a6c.js.map": "/Messenger/static/js/main.d0e00a6c.js.map"
   },
   "entrypoints": [
-    "static/css/main.5258d983.css",
-    "static/js/main.85ef7f12.js"
+    "static/css/main.21dce380.css",
+    "static/js/main.d0e00a6c.js"
   ]
 }
