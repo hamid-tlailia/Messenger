@@ -37,6 +37,7 @@ function App() {
   // set athentification to true to redirect user to home page
   useEffect(() => {
     const login = localStorage.getItem("user-login");
+    // if token exist authentificate user and stop loader if is loged in
     if (login) {
       if (login === "true") {
         setAuthentificated(true);
@@ -45,6 +46,9 @@ function App() {
         setAuthentificated(false);
         setIsLoading(false);
       }
+    } else {
+      // if no teken registred yet redirect user to login and stop loader
+      setIsLoading(false);
     }
   });
 

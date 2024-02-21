@@ -1,26 +1,21 @@
-
 /* container paernt styling */
-.container-startup{
-box-sizing: border-box;
-padding: 0px;
-position: absolute;
-height: 100vh;
-width: 100% !important;
-margin-top: 0 !important;
-bottom: 0;
-background-color: white;
-transition: .5s;
-z-index: 1000;
+.container-startup {
+  position: absolute;
+  height: 102vh !important;
+  width: 100% !important;
+  margin-top: 0 !important;
+  background-color: whitesmoke;
+  z-index: 1000;
 }
 
-.container-startup.hide{
+.container-startup.hide {
   opacity: 0;
-left: -300vh;
-  transition: .5s;
+  left: -300vh;
+  transition: 0.5s;
 }
 /* logo container style with image content */
-.logo-container{
-  background-color:lightblue;
+.logo-container {
+  background-color: lightblue;
   padding: 12px;
   width: 100%;
   height: 100% !important;
@@ -29,43 +24,43 @@ left: -300vh;
   justify-content: center;
   align-items: center;
   border-radius: 0 0 200px 200px;
-margin-top: 0 !important;
-  transition: .5s;
+  padding-top: 15vh !important;
+  transition: 0.5s;
 }
 .startup-logo {
   margin-top: 0 !important;
   width: 350px !important;
-height: 350px !important;
+  height: 350px !important;
   border-radius: 50%;
 }
 /* style image in samll devices screen */
-@media screen and (max-width : 759px) {
-.logo-container {
-  width: 100%;
-  height: auto !important;
-  border-radius: 0px;
-}  
-.startup-logo{
-  width: 250px !important;
-  height: 250px !important;
-}
+@media screen and (max-width: 759px) {
+  .logo-container {
+    width: 100%;
+    height: auto !important;
+    border-radius: 0px;
+  }
+  .startup-logo {
+    width: 250px !important;
+    height: 250px !important;
+  }
 }
 
 /* title style */
-.title{
+.title {
   font-weight: bold;
-  font-family: 'Courier New', Courier, monospace;
-margin-bottom: 10px;
+  font-family: "Courier New", Courier, monospace;
+  margin-bottom: 10px;
 }
 /* description style */
-.description{
-text-align: center;
+.description {
+  text-align: center;
   max-width: 550px;
   height: max-content;
   text-overflow: clip;
   text-wrap: wrap;
-margin-top: 10px;
-  transition: .5s;
+  margin-top: 10px;
+  transition: 0.5s;
 }
 /* steps parent style */
 .steps {
@@ -78,13 +73,13 @@ margin-top: 10px;
   cursor: pointer;
 }
 /* step one  style*/
-.step{
-background-color:gray ;
-width: 20px;
-height: 10px;
-margin-right: 10px;
-border-radius: 30px;
-transition: .5s;
+.step {
+  background-color: gray;
+  width: 20px;
+  height: 10px;
+  margin-right: 10px;
+  border-radius: 30px;
+  transition: 0.5s;
 }
 /* step active style */
 .step.active {
@@ -104,6 +99,5 @@ transition: .5s;
   width: 50px;
   height: 50px;
   padding: 5px !important;
-  transition: .5s;
+  transition: 0.5s;
 }
-

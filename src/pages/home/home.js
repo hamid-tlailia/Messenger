@@ -108,7 +108,7 @@ const Home = () => {
             >
               {/* card top-logo */}
               <div className="logo">
-                <img src={avatar_one} className="shadow-4-strong " alt="" />
+                <img src={avatar_tow} className="shadow-4-strong " alt="" />
               </div>
               {/* user post name */}
               <h4>Hamid Tlailia</h4>
@@ -173,7 +173,7 @@ const Home = () => {
             >
               {/* card top-logo */}
               <div className="logo">
-                <img src={avatar_tow} className="shadow-4-strong" alt="" />
+                <img src={avatar_one} className="shadow-4-strong" alt="" />
               </div>
               {/* user post name */}
               <h4>Isra Mansour</h4>
