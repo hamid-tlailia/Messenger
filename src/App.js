@@ -83,8 +83,11 @@ function App() {
       {authentificated && <Nav />}
     </HashRouter>
   ) : (
-    <div class="loader">
-      <div class="justify-content-center jimu-primary-loading"></div>
+    <div class="app-loader">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
     </div>
   );
 }

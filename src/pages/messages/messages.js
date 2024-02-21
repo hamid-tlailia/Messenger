@@ -385,7 +385,7 @@ const Messages = () => {
         <div
           className={
             getSideBar
-              ? "chat-box text-align-left  border-danger active h-100"
+              ? "chat-box text-align-left   active h-100"
               : "chat-box text-align-left h-100"
           }
         >

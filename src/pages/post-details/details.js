@@ -20,8 +20,8 @@ import NewUserNav from "../../components/login-header/newUserNav";
 const Details = () => {
   // share post state
   const [sharedTitle, setSharedTitle] = useState("");
-  // comments section  state
-  const [show, setShow] = useState(false);
+  // loader section  state
+  const [isLoading, setIsLoading] = useState(true);
   // share modal state
   const [showModal, setShowModal] = useState(false);
   // check if user authentificated / not state
@@ -48,8 +48,12 @@ const Details = () => {
   // check if user already loged in min once in this browser
   useEffect(() => {
     const userToken = localStorage.getItem("user-login");
-    if (userToken) {
+    if (userToken && userToken === "true") {
       setAuthentificated(true);
+      setIsLoading(false);
+    } else {
+      setAuthentificated(false);
+      setIsLoading(false);
     }
   });
 
@@ -76,6 +80,17 @@ const Details = () => {
 
   return (
     <>
+      {
+        // if not getting authentification yet set a loader to page
+        isLoading && (
+          <div class="details-loader">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        )
+      }
       {!authentificated && <NewUserNav />}
       <div className="post-details" ref={details_container}>
         <h4 className="w-100 text-start">
@@ -220,7 +235,7 @@ const Details = () => {
 
               <div className="copy-link w-auto p-1">
                 <span
-                  data-link={`${window.location.href}/posts/details/h8pd221cll479c`}
+                  data-link={window.location.href}
                   onClick={(e) => {
                     navigator.clipboard
                       .writeText(e.target.getAttribute("data-link"))
