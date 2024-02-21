@@ -24,12 +24,17 @@ const Login = () => {
 
   const login = () => {
     localStorage.setItem("user-login", "true");
+    navigate("/");
+    window.location.reload();
   };
-
+  // handle auto redirect
+  const navigate = useNavigate();
   // get user token
   useEffect(() => {
     const token = localStorage.getItem("user-login");
-    if (token) setAuthentificated(true);
+    if (token === "true") {
+      setAuthentificated(true);
+    }
   });
 
   // Register  inputs validation

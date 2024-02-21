@@ -30,29 +30,27 @@ import Details from "./pages/post-details/details";
 function App() {
   // set user login status
   const [authentificated, setAuthentificated] = useState(false);
-  const [user, setUser] = useState(false);
+
   // Loader content charging state
   const [isLoading, setIsLoading] = useState(true);
 
-  // check if user is already loged in
-  setInterval(() => {
-    const login = localStorage.getItem("user-login");
-    if (login) {
-      setUser(true);
-    }
-  }, 1);
-
   // set athentification to true to redirect user to home page
   useEffect(() => {
-    if (user) {
-      setAuthentificated(true);
-      setIsLoading(false);
+    const login = localStorage.getItem("user-login");
+    if (login) {
+      if (login === "true") {
+        setAuthentificated(true);
+        setIsLoading(false);
+      } else {
+        setAuthentificated(false);
+        setIsLoading(false);
+      }
     }
   });
 
   return !isLoading ? (
     <HashRouter>
-      {user && <Header />}
+      {authentificated && <Header />}
 
       <div className="App">
         <Routes>
@@ -78,7 +76,7 @@ function App() {
         </Routes>
       </div>
 
-      {user && <Nav />}
+      {authentificated && <Nav />}
     </HashRouter>
   ) : (
     <div class="loader">

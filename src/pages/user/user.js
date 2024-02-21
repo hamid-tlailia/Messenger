@@ -5,6 +5,7 @@ import "./user.css";
 import userThree from "../public/images/user3.png";
 // import useForm react hook for form validation
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 const User = () => {
   // set a state for changing update and validate button display
   const [updateFirstName, setUpdateFirstName] = useState(false);
@@ -141,6 +142,14 @@ const User = () => {
     }
   };
 
+  // user logout btn func
+  const navigate = useNavigate();
+  const logOut = () => {
+    // update user token from local storage
+    localStorage.setItem("user-login", "false");
+    // redirect user to login page
+    window.location.reload();
+  };
   return (
     <div className="user-container container-fluid">
       <div className="profile-content">
@@ -708,7 +717,7 @@ const User = () => {
 
         <div className="logout-section">
           <p className="mt-3 fw-bold">Logout :</p>
-          <button class="Btn">
+          <button class="Btn" onClick={logOut}>
             <div class="sign">
               <svg viewBox="0 0 512 512">
                 <path
