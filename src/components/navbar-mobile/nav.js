@@ -22,8 +22,11 @@ const Nav = () => {
       {
         // display loader if sispens loader is true
         sispensLoader && (
-          <div class="loader">
-            <div class="justify-content-center jimu-primary-loading"></div>
+          <div class="nav-loader">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
           </div>
         )
       }
