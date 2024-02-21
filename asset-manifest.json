@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Messenger/static/css/main.9ac85653.css",
-    "main.js": "/Messenger/static/js/main.45dae2ad.js",
+    "main.css": "/Messenger/static/css/main.e47252f9.css",
+    "main.js": "/Messenger/static/js/main.9582219c.js",
     "static/media/fleurs.jpeg": "/Messenger/static/media/fleurs.c4418ddde850faaa0a6c.jpeg",
     "static/media/chat-app-logo.png": "/Messenger/static/media/chat-app-logo.f6d02cfd0c448e0e920e.png",
     "static/media/ai-logo.jpg": "/Messenger/static/media/ai-logo.a2c5907bb53738784dcc.jpg",
@@ -13,11 +13,11 @@
     "static/media/user2.png": "/Messenger/static/media/user2.a6143582309785dca610.png",
     "static/media/user4.png": "/Messenger/static/media/user4.0d14c6999b4a5c8e86a7.png",
     "index.html": "/Messenger/index.html",
-    "main.9ac85653.css.map": "/Messenger/static/css/main.9ac85653.css.map",
-    "main.45dae2ad.js.map": "/Messenger/static/js/main.45dae2ad.js.map"
+    "main.e47252f9.css.map": "/Messenger/static/css/main.e47252f9.css.map",
+    "main.9582219c.js.map": "/Messenger/static/js/main.9582219c.js.map"
   },
   "entrypoints": [
-    "static/css/main.9ac85653.css",
-    "static/js/main.45dae2ad.js"
+    "static/css/main.e47252f9.css",
+    "static/js/main.9582219c.js"
   ]
 }
