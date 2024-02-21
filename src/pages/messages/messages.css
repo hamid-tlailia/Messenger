@@ -487,8 +487,9 @@
 
 .emoji {
   position: absolute;
-  top: -62vh;
-  width: 100% !important;
+  top: -65vh;
+  right: 0;
+  width: max-content !important;
   display: flex;
   flex-direction: row;
   justify-content: end;

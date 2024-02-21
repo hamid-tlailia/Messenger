@@ -18,6 +18,10 @@ const User = () => {
   const [fileUrl, setFileUrl] = useState("");
   // preview profile image state
   const [imageUrl, setImageUrl] = useState("");
+  // update infos btn add/remove disabled class to avoid submit form without editing informations
+  const [isDisabled, setIsDisabled] = useState(true);
+  // update password btn add/remove disabled class
+  const [isDisabledPasswordBtn, setIsDisabledPasswordBtn] = useState(true);
   // starting with change page title
   useEffect(() => {
     document.title = "Hamidos | Profile";
@@ -280,6 +284,7 @@ const User = () => {
               <i
                 className="far fa-pen-to-square"
                 onClick={(e) => {
+                  setIsDisabled(!isDisabled);
                   setUpdateFirstName(!updateFirstName);
                   !updateFirstName &&
                     e.target.parentNode.querySelector("#name").focus();
@@ -309,6 +314,7 @@ const User = () => {
               <i
                 className="far fa-pen-to-square"
                 onClick={(e) => {
+                  setIsDisabled(!isDisabled);
                   setUpdateLastName(!updateLastName);
                   !updateLastName &&
                     e.target.parentNode.querySelector("#name").focus();
@@ -337,6 +343,7 @@ const User = () => {
               <i
                 className="far fa-pen-to-square"
                 onClick={(e) => {
+                  setIsDisabled(!isDisabled);
                   setUpdateEmail(!updateEmail);
                   !updateEmail &&
                     e.target.parentNode.querySelector("#email").focus();
@@ -344,7 +351,9 @@ const User = () => {
               ></i>
             </div>
             <button
-              className="btn btn-primary"
+              className={
+                isDisabled ? "btn btn-primary disabled" : "btn btn-primary"
+              }
               style={{ width: "max-content" }}
               type="submit"
               onClick={cloeseEditStates}
@@ -388,6 +397,12 @@ const User = () => {
                     notEmptyOrSpaces: (value) => isNotEmptyOrSpaces(value),
                   },
                 })}
+                // disable/enable submit btn depending in input value
+                onChange={(e) => {
+                  e.target.value.trim().length !== 0
+                    ? setIsDisabledPasswordBtn(false)
+                    : setIsDisabledPasswordBtn(true);
+                }}
               />
               <input
                 type="text"
@@ -401,8 +416,21 @@ const User = () => {
                     notEmptyOrSpaces: (value) => isNotEmptyOrSpaces(value),
                   },
                 })}
+                // disable/enable submit btn depending in input value
+                onChange={(e) => {
+                  e.target.value.trim().length !== 0
+                    ? setIsDisabledPasswordBtn(false)
+                    : setIsDisabledPasswordBtn(true);
+                }}
               />
-              <button type="submit" className="btn btn-primary">
+              <button
+                type="submit"
+                className={
+                  isDisabledPasswordBtn
+                    ? "btn btn-primary disabled"
+                    : "btn btn-primary"
+                }
+              >
                 save
               </button>
             </form>
@@ -429,7 +457,11 @@ const User = () => {
             <div className="friends-list-container">
               <div className="d-flex flex-row justify-content-between align-items-center gap-2">
                 <button
-                  className="lists-nav-btns"
+                  className={
+                    showRequestList === "friends-list"
+                      ? "lists-nav-btns active"
+                      : "lists-nav-btns"
+                  }
                   onClick={() => {
                     setShowRequestList("friends-list");
                   }}
@@ -437,7 +469,11 @@ const User = () => {
                   Friends list
                 </button>
                 <button
-                  className="lists-nav-btns"
+                  className={
+                    showRequestList === "requests-list"
+                      ? "lists-nav-btns active"
+                      : "lists-nav-btns"
+                  }
                   onClick={() => {
                     setShowRequestList("requests-list");
                   }}
@@ -445,7 +481,11 @@ const User = () => {
                   Requests
                 </button>
                 <button
-                  className="lists-nav-btns"
+                  className={
+                    showRequestList === "create-post"
+                      ? "lists-nav-btns active"
+                      : "lists-nav-btns"
+                  }
                   onClick={() => {
                     setShowRequestList("create-post");
                   }}

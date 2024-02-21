@@ -92,7 +92,7 @@ const Details = () => {
           {/* post date */}
           <p>posted : 2 hours ago</p>
           {/* post content */}
-          <p className="post-body mb-1">
+          <p className="post-body mb-1 ">
             This is an example for the first post body and u can share this post
             when u click the share button bellow any time so now u can try it :
           </p>
@@ -218,7 +218,7 @@ const Details = () => {
                 <ShareButtons url={postUrl} title={postTitle} />
               </div>
 
-              <div className="copy-link">
+              <div className="copy-link w-auto p-1">
                 <span
                   data-link={`${window.location.href}/posts/details/h8pd221cll479c`}
                   onClick={(e) => {

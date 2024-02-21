@@ -135,7 +135,7 @@ const Home = () => {
                 </span>
               </div>
               {/* reactions btns container */}
-              <div className="d-flex flex-row justify-content-center align-items-center gap-3">
+              <div className="d-flex flex-row justify-content-center align-items-center gap-3 mb-2">
                 {/* like btn */}
                 <div className="reactions like">
                   <i class="fas fa-heart text-danger me-2"></i> Like
@@ -194,7 +194,7 @@ const Home = () => {
                 <i class="fas fa-heart me-1 mt-1"></i>120 likes
               </span>
               {/* reactions btns container */}
-              <div className="d-flex flex-row justify-content-center align-items-center gap-3">
+              <div className="d-flex flex-row justify-content-center align-items-center gap-3 mb-2">
                 {/* like btn */}
                 <div className="reactions like">
                   <i class="fas fa-heart  me-2"></i> Like
@@ -250,7 +250,7 @@ const Home = () => {
                 <i class="fas fa-heart me-1 mt-1"></i>120 likes
               </span>
               {/* reactions btns container */}
-              <div className="d-flex flex-row justify-content-center align-items-center gap-3">
+              <div className="d-flex flex-row justify-content-center align-items-center gap-3 mb-2">
                 {/* like btn */}
                 <div className="reactions like">
                   <i class="fas fa-heart  me-2"></i> Like
@@ -298,13 +298,13 @@ const Home = () => {
               <ShareButtons url={postUrl} title={postTitle} />
             </div>
 
-            <div className="copy-link">
+            <div className="copy-link w-auto p-1">
               <span
                 onClick={(e) => {
                   navigator.clipboard
                     .writeText(postUrl)
                     .then(() => {
-                      toast.success("Link copied to clipboard !");
+                      toast.success("Link successfully copied !");
                     })
                     .catch((error) => {
                       console.error("Error copying text to clipboard:", error);

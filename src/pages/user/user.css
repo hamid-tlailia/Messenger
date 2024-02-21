@@ -136,6 +136,12 @@
   width: calc(100% / 3);
 }
 
+.lists-nav-btns.active {
+  border: none;
+  background-color: green;
+  color: white;
+  transition: 0.5s;
+}
 /* lists area style */
 
 .lists-area {
@@ -415,7 +421,7 @@
   position: relative;
 }
 
-.close-preview-post-image{
+.close-preview-post-image {
   position: absolute;
   top: 2vh;
   right: 3vh;

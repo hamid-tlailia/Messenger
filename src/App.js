@@ -31,8 +31,10 @@ function App() {
   // set user login status
   const [authentificated, setAuthentificated] = useState(false);
   const [user, setUser] = useState(false);
-  // check if user is already loged in
+  // Loader content charging state
+  const [isLoading, setIsLoading] = useState(true);
 
+  // check if user is already loged in
   setInterval(() => {
     const login = localStorage.getItem("user-login");
     if (login) {
@@ -42,10 +44,13 @@ function App() {
 
   // set athentification to true to redirect user to home page
   useEffect(() => {
-    user && setAuthentificated(true);
+    if (user) {
+      setAuthentificated(true);
+      setIsLoading(false);
+    }
   });
 
-  return (
+  return !isLoading ? (
     <HashRouter>
       {user && <Header />}
 
@@ -75,6 +80,10 @@ function App() {
 
       {user && <Nav />}
     </HashRouter>
+  ) : (
+    <div class="loader">
+      <div class="justify-content-center jimu-primary-loading"></div>
+    </div>
   );
 }
 

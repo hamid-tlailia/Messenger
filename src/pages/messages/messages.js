@@ -17,8 +17,6 @@ import photo from "../public/images/fleurs.jpeg";
 import { NavLink } from "react-router-dom";
 // import verified icon
 import verified from "../public/images/téléchargement.png";
-// import useForm react hook for message form validation
-import { useForm } from "react-hook-form";
 
 const Messages = () => {
   // left side bar state
@@ -46,6 +44,9 @@ const Messages = () => {
   const [getMessageModal, setGetMessageModal] = useState(false);
   // preview image src state
   const [fileUrl, setFileUrl] = useState("");
+  // use a state to chek if selected image is a message or profile image for reason to hide reactions aria in profile photo
+  // and display them in message photo only
+  const [isMessagePhoto, setIsMessagePhoto] = useState(false);
   // prevouis chat reference for reverse chats usage
   const previous = useRef(null);
   // filter previous chat by name
@@ -187,6 +188,19 @@ const Messages = () => {
     }
   };
 
+  // emoji aria hide once user click outside
+  const emojisAria = useRef(null);
+  const emojisDisplayBtn = useRef(null);
+  window.onclick = (event) => {
+    if (emojisAria.current && emojisDisplayBtn.current) {
+      if (
+        event.target !== emojisDisplayBtn.current &&
+        !emojisAria.current.contains(event.target)
+      ) {
+        setShowEmojiPicker(false);
+      }
+    }
+  };
   return (
     // messages area parent
     <div className="messages-area-parent">
@@ -554,6 +568,7 @@ const Messages = () => {
                   setModalImageSrc(
                     e.target.parentNode.querySelector(".message-photo").src
                   );
+                  setIsMessagePhoto(true);
                 }}
               >
                 <img
@@ -684,7 +699,7 @@ const Messages = () => {
 
                 {/* emoji picker react */}
                 {showEmojiPicker && (
-                  <div className="emoji">
+                  <div className="emoji" ref={emojisAria}>
                     <EmojiPicker
                       className="picker"
                       onEmojiClick={handleEmojiSelect}
@@ -694,6 +709,7 @@ const Messages = () => {
 
                 <i
                   class="far fa-face-grin text-warning"
+                  ref={emojisDisplayBtn}
                   onClick={() => setShowEmojiPicker(!showEmojiPicker)}
                 ></i>
                 <label htmlFor="file">
@@ -797,6 +813,7 @@ const Messages = () => {
                 class="fas fa-xmark text-danger rounded border p-2 border-danger"
                 onClick={() => {
                   setShowModal(false);
+                  setIsMessagePhoto(false);
                 }}
               ></i>
             </div>
@@ -810,26 +827,34 @@ const Messages = () => {
               ) : (
                 <span>No SRC available for this image</span>
               )}
-              {/* image reaction + reply + delete and download area */}
-              <div className="card w-75 reply-section mb-5">
-                {/* reply image message area start */}
-                <div className="reply">
-                  <i className="fas fa-heart text-danger"></i>
-                  <i
-                    className="fas fa-reply text-primary"
-                    title="Reply message"
-                    onClick={replyPhoto}
-                  ></i>
-                  {/* download image icon */}
-                  <i
-                    className="fas fa-arrow-down text-warning"
-                    title="Download image"
-                    onClick={download}
-                  ></i>
-                  <i className="fas fa-trash-can text-danger"></i>
+              {/* image reaction + reply + delete and download area ===> display only in message images*/}
+              {isMessagePhoto && (
+                <div className="card w-75 reply-section mb-5">
+                  {/* reply image message area start */}
+                  {/* hide reactions area once reactions container clicked */}
+                  <div
+                    className="reply"
+                    onClick={() => {
+                      setIsMessagePhoto(false);
+                    }}
+                  >
+                    <i className="fas fa-heart text-danger"></i>
+                    <i
+                      className="fas fa-reply text-primary"
+                      title="Reply message"
+                      onClick={replyPhoto}
+                    ></i>
+                    {/* download image icon */}
+                    <i
+                      className="fas fa-arrow-down text-warning"
+                      title="Download image"
+                      onClick={download}
+                    ></i>
+                    <i className="fas fa-trash-can text-danger"></i>
+                  </div>
+                  {/* reply image message area end */}
                 </div>
-                {/* reply image message area end */}
-              </div>
+              )}
             </div>
           </div>
 
