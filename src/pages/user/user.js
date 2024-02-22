@@ -6,6 +6,7 @@ import userThree from "../public/images/user3.png";
 // import useForm react hook for form validation
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 const User = () => {
   // set a state for changing update and validate button display
   const [updateFirstName, setUpdateFirstName] = useState(false);
@@ -150,6 +151,18 @@ const User = () => {
     // redirect user to login page
     window.location.reload();
   };
+  // chek if a spam for reset password
+  const spamPassword = "http://localhost:3000/Messenger#/login/reset-password";
+  useEffect(() => {
+    if (window.location.href === spamPassword) {
+      toast.error(
+        "An action for trying to access reset-password page please if this was you  change it from here or if not please update you account password",
+        {
+          autoClose: false,
+        }
+      );
+    }
+  }, []);
   return (
     <div className="user-container container-fluid">
       <div className="profile-content">

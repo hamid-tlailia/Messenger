@@ -26,6 +26,7 @@ import Messages from "./pages/messages/messages";
 import User from "./pages/user/user";
 // import post details component
 import Details from "./pages/post-details/details";
+import ResetPassword from "./pages/resetPaswword/resetPassword";
 
 function App() {
   // set user login status
@@ -75,6 +76,10 @@ function App() {
             path="/profile"
             element={authentificated ? <User /> : <Login />}
           />
+          <Route
+            path="/login/reset-password"
+            element={authentificated ? <User /> : <ResetPassword />}
+          />
           <Route path="/posts/details/:any" element={<Details />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -84,10 +89,16 @@ function App() {
     </HashRouter>
   ) : (
     <div class="app-loader">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
+      <div class="dot-spinner">
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+      </div>
     </div>
   );
 }

@@ -169,6 +169,10 @@ const Login = () => {
                       Login
                     </button>
                   </form>
+                  {/* forget password link */}
+                  <NavLink to="/login/reset-password" className=" btn-link">
+                    Forget password ?
+                  </NavLink>
                   <span
                     className="d-flex flex-row justify-content-center align-items-center"
                     onClick={() => {
