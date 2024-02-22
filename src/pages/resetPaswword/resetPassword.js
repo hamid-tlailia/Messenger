@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 // import css file
 import "./resetPassword.css";
+import { NavLink } from "react-router-dom";
 
 const ResetPassword = () => {
   const [stepsLable, setStepsLable] = useState({
-    firstStepLabel: "Email verifications ",
-    secondStepLabel: "OTP verification code",
-    thirdStepLabel: "Update old password",
+    firstStepLabel: "Email ",
+    secondStepLabel: "OTP",
+    thirdStepLabel: "Password",
     firstStepStatus: "waiting",
     firstStepColor: "bg-primary",
     secondStepStatus: "",
@@ -47,7 +48,7 @@ const ResetPassword = () => {
                 <i class="fas fa-check"></i>
               )}
             </div>
-            <span> {stepsLable.secondStepLabel} </span>
+            <span className="me-1"> {stepsLable.secondStepLabel} </span>
             <span className="line"></span>
             <div className= {
                 stepIndex > 2
@@ -61,12 +62,12 @@ const ResetPassword = () => {
               step 1
             </div>
             <div className={stepIndex === 2 ? "d-flex" : "d-none"}>
-              <div class="form">
+              <div class="otp-form">
                 {" "}
                 <div class="title">OTP</div>
                 <div class="title">Verification Code</div>
                 <p class="message">
-                  We have sent a verification code to{" "}
+                  We have sent a verification code to
                   <a href="mailto:tlailia757@gmail.com">tlailia757@gmail.com</a>
                 </p>
                 <div class="inputs">
@@ -84,6 +85,7 @@ const ResetPassword = () => {
               </div>
           </div>
           <div className="card-footer steps-footer">
+            <NavLink  to="/"><button className="btn btn-danger">cancel</button></NavLink>
             <button
               className={
                 stepIndex === 3
