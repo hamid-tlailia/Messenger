@@ -125,8 +125,8 @@ const ResetPassword = () => {
             <div
               className={
                 stepIndex === 1
-                  ? "steps-badge bg-success  me-1"
-                  : "steps-badge bg-success me-1"
+                  ? "badge bg-success  me-1"
+                  : "badge bg-success me-1"
               }
             >
               {stepIndex === 1 ? "1" : <i class="fas fa-check"></i>}
@@ -135,9 +135,7 @@ const ResetPassword = () => {
             <span className="line"></span>
             <div
               className={
-                stepIndex > 1
-                  ? "steps-badge bg-success  me-1"
-                  : "steps-badge bg-dark me-1"
+                stepIndex > 1 ? "badge bg-success  me-1" : "badge bg-dark me-1"
               }
             >
               {stepIndex < 3 ? "2" : <i class="fas fa-check"></i>}
@@ -146,9 +144,7 @@ const ResetPassword = () => {
             <span className="line"></span>
             <div
               className={
-                stepIndex > 2
-                  ? "steps-badge bg-success  me-1"
-                  : "steps-badge bg-dark me-1"
+                stepIndex > 2 ? "badge bg-success  me-1" : "badge bg-dark me-1"
               }
             >
               3
