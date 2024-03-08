@@ -820,14 +820,14 @@ const User = () => {
                       <div className="card shadow-2-strong rounded-5 p-3 d-flex flex-row justify-content-center align-items-center gap-3 mb-2">
                         <NavLink
                           to="/posts/details/225L7PKKV25CC"
-                          className="btn btn-primary"
+                          className="btn btn-primary btn-floating"
                         >
                           <i class="far fa-eye"></i>
                         </NavLink>
-                        <button className="btn btn-success" onClick={editPost}>
+                        <button className="btn btn-success btn-floating" onClick={editPost}>
                           <i class="fas fa-pen-clip"></i>
                         </button>
-                        <button className="btn btn-danger">
+                        <button className="btn btn-danger btn-floating">
                           <i class="far fa-trash-can"></i>
                         </button>
                       </div>

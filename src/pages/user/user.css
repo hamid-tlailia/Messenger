@@ -471,13 +471,15 @@
   position: absolute;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 120vh !important;
   background-color: white;
   z-index: 1000;
   padding: 5px;
   overflow-y: auto;
+  overflow-x: visible !important;
   transition: 0.3s;
   opacity: 1;
+  z-index: 1112200;
 }
 
 /* edit post section layout */
