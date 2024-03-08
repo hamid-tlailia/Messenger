@@ -909,7 +909,9 @@ const User = () => {
                                   data-mdb-input-init
                                   style={{ resize: "none" }}
                                   value={getEditableText}
-                                  onChange={removeDisabledClass}
+                                    onChange={(e) => {
+                                    setGetEditableText(e.target.value);
+                                  }}
                                   ref={textarea}
                                 ></textarea>
                                 <label className="form-label" for="post-input">
