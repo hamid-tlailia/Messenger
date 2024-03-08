@@ -180,13 +180,15 @@ const User = () => {
     // clear input value
     e.target.value = null;
   };
-
+// get text area of post edit 
+const textarea = useRef(null)
   // edit post btn func
 
   const editPost = (e) => {
-    const editableText = e.target.parentNode.parentNode.children[3];
+    const editableText = e.target.parentNode.parentNode.parentNode.children[3];
     setShowEditPostAria(true);
     if (editableText) setGetEditableText(editableText.textContent);
+    textarea.current.focus()
   };
   return (
     <div className="user-container container-fluid">
@@ -824,7 +826,10 @@ const User = () => {
                         >
                           <i class="far fa-eye"></i>
                         </NavLink>
-                        <button className="btn btn-success btn-floating" onClick={editPost}>
+                        <button
+                          className="btn btn-success btn-floating"
+                          onClick={editPost}
+                        >
                           <i class="fas fa-pen-clip"></i>
                         </button>
                         <button className="btn btn-danger btn-floating">
@@ -905,6 +910,7 @@ const User = () => {
                                   style={{ resize: "none" }}
                                   value={getEditableText}
                                   onChange={removeDisabledClass}
+                                  ref={textarea}
                                 ></textarea>
                                 <label className="form-label" for="post-input">
                                   What you thinking in...😊
