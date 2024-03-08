@@ -522,7 +522,15 @@
 .close-edit-image {
   position: absolute;
   right: 8px;
-  color: red;
+  top: 10vh;
+  color: white;
+  width: 25px;
+  height: 25px;
+  background-color: red;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer !important;
   z-index: 110;
 }

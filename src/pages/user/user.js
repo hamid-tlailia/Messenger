@@ -180,15 +180,15 @@ const User = () => {
     // clear input value
     e.target.value = null;
   };
-// get text area of post edit 
-const textarea = useRef(null)
+  // get text area of post edit
+  const textarea = useRef(null);
   // edit post btn func
 
   const editPost = (e) => {
     const editableText = e.target.parentNode.parentNode.parentNode.children[3];
     setShowEditPostAria(true);
     if (editableText) setGetEditableText(editableText.textContent);
-    textarea.current.focus()
+    textarea.current.focus();
   };
   return (
     <div className="user-container container-fluid">
@@ -710,7 +710,7 @@ const textarea = useRef(null)
                     {/* User post text area */}
                     <div className="form-floating w-100">
                       <textarea
-                        className="form-control h-50"
+                        className="form-control h-100"
                         cols={59}
                         id="post-input"
                         rows={6}
@@ -783,7 +783,6 @@ const textarea = useRef(null)
                     {/* post example */}
                     <div
                       className="card-items shadow-4-strong"
-                      style={{zIndex : "10222000"}}
                       data-name="Hamid Tlailia"
                     >
                       {/* card top-logo */}

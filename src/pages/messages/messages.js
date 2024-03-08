@@ -824,7 +824,7 @@ const Messages = () => {
               {modalImageSrc !== "" ? (
                 <img
                   src={modalImageSrc}
-                  className="img-fluid message-photo w-auto h-75 mb-4"
+                  className="img-fluid message-photo w-auto h-auto mb-4"
                   alt="preview"
                 />
               ) : (
