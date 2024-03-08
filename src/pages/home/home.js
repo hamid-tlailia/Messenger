@@ -131,7 +131,7 @@ const Home = () => {
                   others
                 </span>
                 <span className="d-flex flex-row justify-content-start align-items-center ">
-                  83 comments
+                  2 comments
                 </span>
               </div>
               {/* reactions btns container */}

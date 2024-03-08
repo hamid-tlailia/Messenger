@@ -148,6 +148,7 @@ const Messages = () => {
       setReplyReceivedMessage("");
       setReplySentMessage("");
     }
+    setIsMessagePhoto(false);
   };
 
   // get profile func
@@ -176,6 +177,7 @@ const Messages = () => {
     if (downloadImageSRC.current) {
       downloadImageSRC.current.click();
     }
+    setIsMessagePhoto(false);
   };
 
   // send message btn func
@@ -719,6 +721,7 @@ const Messages = () => {
                   type="file"
                   id="file"
                   className="d-none"
+                  accept="image/*"
                   onChange={displayPostImage}
                 />
               </div>
@@ -821,7 +824,7 @@ const Messages = () => {
               {modalImageSrc !== "" ? (
                 <img
                   src={modalImageSrc}
-                  className="img-fluid message-photo w-100 h-75 mb-4"
+                  className="img-fluid message-photo w-auto h-75 mb-4"
                   alt="preview"
                 />
               ) : (
@@ -832,13 +835,14 @@ const Messages = () => {
                 <div className="card w-75 reply-section mb-5">
                   {/* reply image message area start */}
                   {/* hide reactions area once reactions container clicked */}
-                  <div
-                    className="reply"
-                    onClick={() => {
-                      setIsMessagePhoto(false);
-                    }}
-                  >
-                    <i className="fas fa-heart text-danger"></i>
+                  <div className="reply">
+                    <i
+                      className="fas fa-heart text-danger"
+                      onClick={() => {
+                        setIsMessagePhoto(false);
+                        setShowModal(false);
+                      }}
+                    ></i>
                     <i
                       className="fas fa-reply text-primary"
                       title="Reply message"
@@ -850,7 +854,13 @@ const Messages = () => {
                       title="Download image"
                       onClick={download}
                     ></i>
-                    <i className="fas fa-trash-can text-danger"></i>
+                    <i
+                      className="fas fa-trash-can text-danger"
+                      onClick={() => {
+                        setIsMessagePhoto(false);
+                        setShowModal(false);
+                      }}
+                    ></i>
                   </div>
                   {/* reply image message area end */}
                 </div>
@@ -881,9 +891,13 @@ const Messages = () => {
               ></i>
             </div>
             {/* image area */}
-            <div className="card-body w-100">
+            <div className="card-body d-flex justify-content-center align-items-center w-100">
               {fileUrl && (
-                <img src={fileUrl} className="image-message" alt="Preview" />
+                <img
+                  src={fileUrl}
+                  className="image-message w-auto"
+                  alt="Preview"
+                />
               )}
             </div>
             {/* message area */}

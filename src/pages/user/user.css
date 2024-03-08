@@ -435,3 +435,92 @@
   align-items: center;
   cursor: pointer;
 }
+
+/* change disabled class */
+.disabled {
+  color: white !important;
+  background-color: rgba(128, 128, 128, 0.696) !important;
+}
+
+/* my posts section layout */
+.my-posts-btn {
+  background-color: blue;
+  color: white;
+  max-width: max-content;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.my-posts {
+  position: absolute;
+  top: -200vh;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 1000;
+  padding: 5px;
+  overflow-y: auto;
+  transition: 0.3s;
+  opacity: 0;
+}
+.my-posts.active {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 1000;
+  padding: 5px;
+  overflow-y: auto;
+  transition: 0.3s;
+  opacity: 1;
+}
+
+/* edit post section layout */
+.edit-post-section {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.807);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  z-index: -1;
+  transition: 0.3s;
+}
+.edit-post-section.show {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  z-index: 1;
+  transition: 0.3s;
+}
+.edit-post-content {
+  position: relative;
+  background-color: black;
+  max-height: 100%;
+}
+.bg-secondary {
+  background-color: grey;
+}
+.cursor-pointer {
+  cursor: pointer !important;
+}
+.close-edit-image {
+  position: absolute;
+  right: 8px;
+  color: red;
+  cursor: pointer !important;
+  z-index: 110;
+}

@@ -57,7 +57,7 @@ const Header = () => {
               <i class="fas fa-bell me-2"></i> Notifications
             </NavLink>
             <NavLink className="routes" to="/messages">
-              <i class="fas fa-comment me-2"></i> Messages
+              <i class="fas fa-comment me-2"></i> Chats
             </NavLink>
             <NavLink className="routes" to="/profile">
               <i class="fas fa-user-group me-2"></i> Profile

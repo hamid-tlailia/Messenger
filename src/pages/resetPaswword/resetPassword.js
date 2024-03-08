@@ -103,8 +103,8 @@ const ResetPassword = () => {
   // control submit btn
   useEffect(() => {
     if (
-      verification.oldPassword.length + verification.newPassword.length >
-      11
+      verification.oldPassword.length + verification.newPassword.length > 11 &&
+      verification.oldPassword === verification.newPassword
     ) {
       submitBTN.current.classList.remove("disabled");
     } else {
@@ -221,7 +221,7 @@ const ResetPassword = () => {
                     }}
                   />
                   <label class="form-label" for="form1Example1">
-                    Old password*
+                    New password*
                   </label>
                 </div>
 
@@ -239,7 +239,7 @@ const ResetPassword = () => {
                     }}
                   />
                   <label class="form-label" for="form1Example2">
-                    New password*
+                    Confirme password*
                   </label>
                 </div>
               </form>

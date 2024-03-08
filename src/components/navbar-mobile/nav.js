@@ -63,7 +63,7 @@ const Nav = () => {
           <NavLink className="navs" to="/messages">
             <div className=" messages-mobile">
               <i class="fas fa-comment mb-1"></i>
-              <span>Messages</span>
+              <span>Chats</span>
             </div>
           </NavLink>
           {/* users mobile */}

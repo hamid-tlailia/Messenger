@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 // import css file
 import "./user.css";
+// import posts dependencies images
+import logo from "../public/images/fleurs.jpeg";
+import avatar_tow from "../public/images/user1.png";
 // import user image
 import userThree from "../public/images/user3.png";
 // import useForm react hook for form validation
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 const User = () => {
   // set a state for changing update and validate button display
@@ -24,6 +27,14 @@ const User = () => {
   const [isDisabled, setIsDisabled] = useState(true);
   // update password btn add/remove disabled class
   const [isDisabledPasswordBtn, setIsDisabledPasswordBtn] = useState(true);
+  // show my posts section state
+  const [showPostsSection, setShowPostsSection] = useState(false);
+  // display editable image state
+  const [editableImageSrc, setEditableImageSrc] = useState("");
+  // show and hide edit post aria
+  const [showEditPostAria, setShowEditPostAria] = useState(false);
+  // display editable text in text area
+  const [getEditableText, setGetEditableText] = useState("");
   // starting with change page title
   useEffect(() => {
     document.title = "Hamidos | Profile";
@@ -141,6 +152,7 @@ const User = () => {
     } else {
       postBTN.classList.add("disabled");
     }
+    setGetEditableText(e.target.value);
   };
 
   // user logout btn func
@@ -151,18 +163,31 @@ const User = () => {
     // redirect user to login page
     window.location.reload();
   };
-  // chek if a spam for reset password
-  const spamPassword = "http://localhost:3000/Messenger#/login/reset-password";
-  useEffect(() => {
-    if (window.location.href === spamPassword) {
-      toast.error(
-        "An action for trying to access reset-password page please if this was you  change it from here or if not please update you account password",
-        {
-          autoClose: false,
-        }
-      );
+
+  // display editable image from input file func
+
+  const displayEditableImage = (e) => {
+    // get input file value
+    const selectedImage = e.target.files[0];
+
+    // Create object URL for the selected file
+
+    // push image src inside file url state
+    if (selectedImage) {
+      const imageUrl = URL.createObjectURL(selectedImage);
+      setEditableImageSrc(imageUrl);
     }
-  }, []);
+    // clear input value
+    e.target.value = null;
+  };
+
+  // edit post btn func
+
+  const editPost = (e) => {
+    const editableText = e.target.parentNode.parentNode.children[3];
+    setShowEditPostAria(true);
+    if (editableText) setGetEditableText(editableText.textContent);
+  };
   return (
     <div className="user-container container-fluid">
       <div className="profile-content">
@@ -252,6 +277,7 @@ const User = () => {
               type="file"
               id="file"
               className="d-none"
+              accept="image/*"
               ref={profileImageInput}
               onChange={showProfileImage}
             />
@@ -691,7 +717,7 @@ const User = () => {
                         onChange={removeDisabledClass}
                       ></textarea>
                       <label className="form-label" for="textAreaExample">
-                        What is in your mind 😊
+                        What's on your mind...😊
                       </label>
                     </div>
                     {/* post file + submit btns */}
@@ -705,6 +731,7 @@ const User = () => {
                           className="d-none"
                           id="image-file"
                           onChange={displayPostImage}
+                          accept="image/*"
                           ref={fileInput}
                         />
                         <i class="far fa-image"></i> Photos
@@ -718,6 +745,211 @@ const User = () => {
                       </button>
                     </div>
                   </form>
+                  <hr />
+                  {/* my posts aria start */}
+                  <div className="w-100 d-flex justify-content-center align-items-center">
+                    <p
+                      className="my-posts-btn"
+                      onClick={() => {
+                        setShowPostsSection(true);
+                        // Scroll to the top of the page
+                        window.scroll({
+                          top: 0,
+                          behavior: "smooth", // Optional: Smooth scrolling behavior
+                        });
+                      }}
+                    >
+                      <i className="fas fa-pen-clip"></i> My posts
+                    </p>
+                  </div>
+                  <div
+                    className={
+                      showPostsSection ? "my-posts active" : "my-posts"
+                    }
+                  >
+                    {/* posts area goes here */}
+                    <div className="d-flex flex-row justify-content-between align-items-center">
+                      <p className="f-bold">Manage your posts</p>
+                      <i
+                        class="fas fa-xmark close-modal"
+                        onClick={() => {
+                          setShowPostsSection(false);
+                        }}
+                      ></i>
+                    </div>
+                    <br />
+                    {/* post example */}
+                    <div
+                      className="card-items shadow-4-strong"
+                      data-name="Hamid Tlailia"
+                    >
+                      {/* card top-logo */}
+                      <div className="logo">
+                        <img
+                          src={avatar_tow}
+                          className="shadow-4-strong "
+                          alt=""
+                          style={{ zIndex: "1000" }}
+                        />
+                      </div>
+                      {/* user post name */}
+                      <h4>Hamid Tlailia</h4>
+                      {/* post date */}
+                      <p>posted : 2 hours ago</p>
+                      {/* post content */}
+                      <p className="post-body  text-left">
+                        This is an example for the first post body and u can
+                        share this post when u click the share button bellow :
+                      </p>
+                      <img
+                        src={logo}
+                        className="position-relative w-100 post-image"
+                        alt=""
+                      />
+                      {/* likes number + comments */}
+                      <div className="d-flex flex-row justify-content-between align-items-center mt-2 mb-3 w-100">
+                        <span className="d-flex flex-row justify-content-start align-items-center ">
+                          <i class="fas fa-heart text-danger me-1 mt-1"></i>you
+                          and 120 others
+                        </span>
+                        <span className="d-flex flex-row justify-content-start align-items-center ">
+                          2 comments
+                        </span>
+                      </div>
+                      {/* reactions btns container */}
+                      <div className="card shadow-2-strong rounded-5 p-3 d-flex flex-row justify-content-center align-items-center gap-3 mb-2">
+                        <NavLink
+                          to="/posts/details/225L7PKKV25CC"
+                          className="btn btn-primary"
+                        >
+                          <i class="far fa-eye"></i>
+                        </NavLink>
+                        <button className="btn btn-success" onClick={editPost}>
+                          <i class="fas fa-pen-clip"></i>
+                        </button>
+                        <button className="btn btn-danger">
+                          <i class="far fa-trash-can"></i>
+                        </button>
+                      </div>
+
+                      {/* comments container */}
+                      <div className="comments mt-3 h-100">
+                        {/* comment 1 */}
+                        <div className="all-flex-row w-100">
+                          <div className="badge-comment  bg-dark text-light ">
+                            I
+                          </div>
+                          <div className="all-flex-col">
+                            <strong className="mt-1">Isra Mansour</strong>
+                            <p className="comment-body">
+                              i love this post ! <mark>1 hrs ago</mark>
+                            </p>
+                          </div>
+                          <i class="far fa-trash-can mt-4 text-danger ms-1"></i>
+                        </div>
+                        {/* comment 2 */}
+                        <div className="all-flex-row w-100">
+                          <div className="badge-comment  bg-dark text-light ">
+                            K
+                          </div>
+                          <div className="all-flex-col">
+                            <strong className="mt-1">Khaled Jouablia</strong>
+                            <p className="comment-body">
+                              it's very amazin... <mark>25 min ago</mark>
+                            </p>
+                          </div>
+                          <i class="far fa-trash-can mt-4 text-danger ms-1"></i>
+                        </div>
+                      </div>
+                      {/* edit post section */}
+                      <div
+                        className={
+                          showEditPostAria
+                            ? "edit-post-section show"
+                            : "edit-post-section"
+                        }
+                      >
+                        <div className="edit-post-content">
+                          <div className="d-flex card-header flex-row justify-content-between align-items-center bg-secondary pb-0 p-1">
+                            <p className="f-bold mt-2 text-light">Edit post</p>
+                            <i class="fas fa-pen-to-square text-success"></i>
+                          </div>
+                          {/* display preview image */}
+                          {editableImageSrc !== "" && (
+                            <div className="mb-2">
+                              <span
+                                className="close-edit-image"
+                                onClick={() => {
+                                  setEditableImageSrc("");
+                                }}
+                              >
+                                X
+                              </span>
+                              <img
+                                src={editableImageSrc}
+                                className="position-relative w-100 post-image"
+                                alt=""
+                              />
+                            </div>
+                          )}
+                          {/* post body */}
+                          <div className="card-body">
+                            <div className="card-body  mt-1">
+                              <div className="form-floating w-100">
+                                <textarea
+                                  className="form-control h-50"
+                                  cols={59}
+                                  id="post-input"
+                                  rows={6}
+                                  data-mdb-input-init
+                                  style={{ resize: "none" }}
+                                  value={getEditableText}
+                                  onChange={removeDisabledClass}
+                                ></textarea>
+                                <label className="form-label" for="post-input">
+                                  What you thinking in...😊
+                                </label>
+                              </div>
+                            </div>
+
+                            <div className="d-flex justify-content-center align-items-center mt-3 w-100 text-light">
+                              <div className="bg-secondary p-2 rounded-5 cursor-pointer">
+                                <label
+                                  htmlFor="image"
+                                  className="cursor-pointer"
+                                >
+                                  <i class="fas fa-images text-primary me-1"></i>
+                                  upload other image
+                                </label>
+                                <input
+                                  type="file"
+                                  id="image"
+                                  className="d-none"
+                                  accept="image/*"
+                                  onChange={displayEditableImage}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          {/* submit - cancel btns */}
+                          <div className="card-footer p-2 d-flex justify-content-end mt-5">
+                            <button className="btn btn-success me-2 btn-floating">
+                              <i class="fas fa-check"></i>
+                            </button>
+                            <button
+                              className="btn btn-danger btn-floating"
+                              onClick={() => {
+                                setShowEditPostAria(false);
+                              }}
+                            >
+                              <i class="fas fa-xmark"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* my posts aria end */}
                 </div>
                 {/* create post area end */}
               </div>
