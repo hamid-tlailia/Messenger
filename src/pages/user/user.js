@@ -766,7 +766,7 @@ const textarea = useRef(null)
                   </div>
                   <div
                     className={
-                      showPostsSection ? "my-posts active" : "my-posts"
+                      showPostsSection ? "my-posts  active" : "my-posts"
                     }
                   >
                     {/* posts area goes here */}
@@ -783,6 +783,7 @@ const textarea = useRef(null)
                     {/* post example */}
                     <div
                       className="card-items shadow-4-strong"
+                      style={{zIndex : "10222000"}}
                       data-name="Hamid Tlailia"
                     >
                       {/* card top-logo */}
